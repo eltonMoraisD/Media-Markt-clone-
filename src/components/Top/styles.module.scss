@@ -1,0 +1,27 @@
+.top {
+  background: $background-primary-color;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 10px 20px;
+    max-width: 1204px;
+    gap: 10px;
+    
+    li {
+      position: relative;
+      color: $color-white;
+      font-size: 13px;
+      @media (max-width: 750px){
+        &:nth-child(-n+3){
+          display: none;
+        }
+      }
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+}

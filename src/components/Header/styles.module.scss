@@ -1,0 +1,139 @@
+.header {
+  background: $header-color;
+  padding: 0px 60px;
+
+  &__top {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 0;
+    gap: 1.5rem;
+
+    a {
+      color: $color-white;
+      font-size: 13px;
+    }
+  }
+
+  &__main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0px auto;
+    position: relative;
+
+    // line-height: 1;
+
+
+    &__logo {
+      width: 250px;
+      margin: 0;
+      height: 80px;
+      object-fit: contain;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    padding: 10px 24px;
+    border: 2px solid $color-white;
+    border-radius: 8px;
+    padding: 16px;
+    color: $color-white;
+    font-weight: 900;
+    margin: 1.5rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+
+
+    background: none;
+
+
+
+    span {
+      margin-left: 6px;
+      font-size: 13px;
+    }
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    flex: 1;
+
+    input {
+      outline: none;
+      border-radius: 0px 8px 8px 0;
+      font-size: 16px;
+      padding: 16px;
+      border: 0;
+      height: 50px;
+      // min-height: 48px;
+      width: 100%;
+    }
+  }
+
+  &__search__btn {
+    border-radius: 8px 0 0 8px;
+    background: $color-white;
+    padding: 16px;
+    height: 50px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+
+    svg {
+      position: fixed;
+      height: auto;
+      width: 1.2rem;
+      fill: $white-gray;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    gap: 1rem;
+
+    &__icons {
+      position: relative;
+      display: grid;
+      place-items: center;
+      background: $color-white;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+
+      svg {
+        width: 1.3rem;
+        height: 1.3rem;
+      }
+    }
+  }
+
+  &__cart__count {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    content: "";
+    width: 1.1rem;
+    height: 1.1rem;
+    background: black;
+    border-radius: 50%;
+    top: -2px;
+    right: -3px;
+
+    p {
+      color: $color-white;
+      font-size: 10px;
+      font-weight: 600;
+    }
+  }
+}

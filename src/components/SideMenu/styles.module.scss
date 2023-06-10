@@ -1,0 +1,70 @@
+.side__container {
+  position: absolute;
+  width: 285px;
+  height: 100vh;
+  background: $color-white;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 10px 0;
+    position: relative;
+
+    button {
+      cursor: pointer;
+      background: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      border-bottom: 1px solid $white-gray;
+      top: 85px;
+
+    }
+
+    &__logo {
+      width: 160px;
+      margin: 0;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+      position: relative;
+
+    }
+  }
+
+  &__menu {
+    display: flex;
+    margin-top: 15px;
+
+    &__btn {
+      // position: absolute;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+
+      button {
+        background: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 16px;
+        font-size: 13px;
+
+      }
+    }
+  }
+
+
+}
