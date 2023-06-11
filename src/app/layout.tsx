@@ -1,5 +1,8 @@
+import Top from "@/components/Top";
 import "../styles/globals.scss";
 import { Inter, Source_Sans_Pro } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Top />
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

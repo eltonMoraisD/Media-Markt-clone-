@@ -1,6 +1,6 @@
 .header {
   background: $header-color;
-  padding: 0px 60px;
+
 
   &__top {
     display: flex;
@@ -9,6 +9,10 @@
     padding: 12px 0;
     gap: 1.5rem;
 
+    @media (max-width: 1000px) {
+      display: none;
+    }
+
     a {
       color: $color-white;
       font-size: 13px;
@@ -16,46 +20,86 @@
   }
 
   &__main {
+    padding: 0px 60px;
+
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     max-width: 1200px;
-    margin: 0px auto;
-    position: relative;
+    margin: 0 auto;
 
-    // line-height: 1;
+    @media(max-width: 750px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
+      // align-items: center;
+
+      padding: 10px;
+    }
+
 
 
     &__logo {
-      width: 250px;
-      margin: 0;
-      height: 80px;
+      width: 200px;
+      height: auto;
+      margin-right: 2.5rem;
       object-fit: contain;
+
+      @media (max-width: 1000px) {
+        margin-right: 12px;
+      }
+
+      //Bug with image responsive 
+      @media(max-width: 750px) {
+
+        display: flex;
+        text-align: left;
+
+      }
     }
   }
 
   &__menu {
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 10px 24px;
     border: 2px solid $color-white;
     border-radius: 8px;
-    padding: 16px;
     color: $color-white;
     font-weight: 900;
-    margin: 1.5rem;
     letter-spacing: 1px;
     cursor: pointer;
-
-
     background: none;
 
 
+    @media (max-width: 1000px) {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      border: none;
+      margin: 0;
+      left: -8px;
+      // top: 15px;
+    }
+
+
+    svg {
+      width: 25px;
+      height: 25px;
+
+    }
 
     span {
       margin-left: 6px;
       font-size: 13px;
+
+
+      @media (max-width: 1000px) {
+        display: none;
+
+      }
     }
   }
 
@@ -64,19 +108,32 @@
     align-items: center;
     flex: 1;
 
+    @media(max-width: 750px) {
+      width: 100%;
+      // margin-right: 30px;
+      // margin-bottom: 1.2rem;
+    }
+
     input {
+
       outline: none;
       border-radius: 0px 8px 8px 0;
       font-size: 16px;
       padding: 16px;
       border: 0;
       height: 50px;
-      // min-height: 48px;
       width: 100%;
+
+      @media(max-width: 750px) {
+        margin: 0;
+        // margin-right: 10px;
+      }
+
     }
   }
 
   &__search__btn {
+    margin-left: 30px;
     border-radius: 8px 0 0 8px;
     background: $color-white;
     padding: 16px;
@@ -93,6 +150,14 @@
       width: 1.2rem;
       fill: $white-gray;
     }
+
+    @media(max-width: 750px) {
+
+      margin-top: 2rem;
+      margin: 0;
+      // margin-left: 10px;
+      // margin-bottom: 1.5rem;
+    }
   }
 
   &__wrapper {
@@ -102,19 +167,25 @@
     margin: 1rem;
     gap: 1rem;
 
+
+
     &__icons {
       position: relative;
       display: grid;
       place-items: center;
       background: $color-white;
-      width: 3rem;
-      height: 3rem;
+      width: 2.5rem;
+      height: 2.5rem;
       border-radius: 50%;
 
-      svg {
-        width: 1.3rem;
-        height: 1.3rem;
-      }
+
+    }
+
+    @media(max-width: 750px) {
+      position: absolute;
+      right: 0;
+      top: 0;
+
     }
   }
 

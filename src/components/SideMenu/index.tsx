@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import styles from "./styles.module.scss";
 import logo from "../../assets/logo-red.png";
@@ -15,7 +16,7 @@ const SideMenu: React.FunctionComponent<IAppProps> = ({
 }) => {
   return (
     <>
-      {isOpen ? (
+      {isOpen && (
         <div className={styles.side__container}>
           <div className={styles.side__container__header}>
             <Image
@@ -40,8 +41,6 @@ const SideMenu: React.FunctionComponent<IAppProps> = ({
             </ul>
           ))}
         </div>
-      ) : (
-        ""
       )}
     </>
   );
