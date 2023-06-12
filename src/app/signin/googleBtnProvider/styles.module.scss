@@ -1,0 +1,23 @@
+.social__btn {
+  outline: none;
+  // max-width: 740px;
+
+  height: 50px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // padding-left: 5%;
+  gap: 10px;
+  background: none;
+  border: 1px solid #66666683;
+  cursor: pointer;
+
+  width: 290px;
+
+  span {
+    font-size: 14px;
+
+  }
+
+}

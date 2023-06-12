@@ -49,19 +49,19 @@ const Header: React.FunctionComponent<IAppProps> = () => {
             <input type="text" placeholder="Rechercer" />
           </div>
           <div className={styles.header__wrapper}>
-            <span className={styles.header__wrapper__icons}>
-              <Link href="#">
+            <Link href="/signin">
+              <span className={styles.header__wrapper__icons}>
                 <FaUser />
-              </Link>
-            </span>
-            <span className={styles.header__wrapper__icons}>
-              <Link href="#">
-                <RiShoppingCart2Fill />
-              </Link>
-              <span className={styles.header__cart__count}>
-                <p>1</p>
               </span>
-            </span>
+            </Link>
+            <Link href="/register">
+              <span className={styles.header__wrapper__icons}>
+                <RiShoppingCart2Fill />
+                <span className={styles.header__cart__count}>
+                  <p>1</p>
+                </span>
+              </span>
+            </Link>
           </div>
         </div>
       </div>
