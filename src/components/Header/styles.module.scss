@@ -1,13 +1,16 @@
 .header {
   background: $header-color;
-
+  line-height: 1;
 
   &__top {
+
+    // position: relative;
     display: flex;
     max-width: 1200px;
     margin: 0 auto;
     padding: 12px 0;
     gap: 1.5rem;
+    overflow: hidden;
 
     @media (max-width: 1000px) {
       display: none;
@@ -19,30 +22,40 @@
     }
   }
 
-  &__main {
-    padding: 0px 60px;
 
-    position: relative;
+  // @media only screen and (min-width: 750px){
+  //   position: sticky;
+  //   top: -40px;
+  //   z-index: 99999;
+  // }
+  // @media only screen and (min-width: 1000px){
+  //   position: sticky;
+  //   top: -10px;
+  //   z-index: 99999;
+  // }
+
+  &__main {
+
+    padding: 0px 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
 
-    @media(max-width: 750px) {
+
+    @media (max-width: 750px) {
       display: flex;
       flex-direction: column;
       justify-content: left;
-      // align-items: center;
 
       padding: 10px;
+
     }
 
-
-
     &__logo {
-      width: 200px;
-      height: auto;
+      // width: 200px;
+      // height: auto;
       margin-right: 2.5rem;
       object-fit: contain;
 
@@ -50,12 +63,13 @@
         margin-right: 12px;
       }
 
-      //Bug with image responsive 
-      @media(max-width: 750px) {
-
+      //Bug with image responsive
+      @media (max-width: 750px) {
         display: flex;
         text-align: left;
-
+        // width: max-content;
+        width: 150px;
+        left: 0;
       }
     }
   }
@@ -73,7 +87,6 @@
     cursor: pointer;
     background: none;
 
-
     @media (max-width: 1000px) {
       position: absolute;
       display: grid;
@@ -84,21 +97,30 @@
       // top: 15px;
     }
 
+    @media (max-width: 750px) {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      justify-content: center;
+      border: none;
+      margin: 0;
+      left: -8px;
+      // top: 35px;
+    }
+
+
 
     svg {
       width: 25px;
       height: 25px;
-
     }
 
     span {
       margin-left: 6px;
       font-size: 13px;
 
-
       @media (max-width: 1000px) {
         display: none;
-
       }
     }
   }
@@ -108,14 +130,13 @@
     align-items: center;
     flex: 1;
 
-    @media(max-width: 750px) {
+    @media (max-width: 750px) {
       width: 100%;
       // margin-right: 30px;
       // margin-bottom: 1.2rem;
     }
 
     input {
-
       outline: none;
       border-radius: 0px 8px 8px 0;
       font-size: 16px;
@@ -124,11 +145,10 @@
       height: 50px;
       width: 100%;
 
-      @media(max-width: 750px) {
+      @media (max-width: 750px) {
         margin: 0;
         // margin-right: 10px;
       }
-
     }
   }
 
@@ -145,14 +165,13 @@
     cursor: pointer;
 
     svg {
-      position: fixed;
+      // position: fixed;
       height: auto;
       width: 1.2rem;
       fill: $white-gray;
     }
 
-    @media(max-width: 750px) {
-
+    @media (max-width: 750px) {
       margin-top: 2rem;
       margin: 0;
       // margin-left: 10px;
@@ -164,10 +183,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 1rem;
-    gap: 1rem;
+    margin-left: 10px;
 
-
+    // gap: 1rem;
 
     &__icons {
       position: relative;
@@ -177,15 +195,15 @@
       width: 2.5rem;
       height: 2.5rem;
       border-radius: 50%;
-
+      margin-right: 10px;
 
     }
 
-    @media(max-width: 750px) {
+    @media (max-width: 750px) {
       position: absolute;
-      right: 0;
-      top: 0;
+      right: 8px;
 
+      // top: 0;
     }
   }
 

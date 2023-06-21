@@ -1,45 +1,36 @@
-import Button from "@/components/Button";
-import Input from "@/components/Input";
 import styles from "./styles.module.scss";
-import { getProviders, signIn } from "next-auth/react";
+import { getProviders } from "next-auth/react";
 import GoogleBtnProvider from "./googleBtnProvider";
 import googleIcon from "../../assets/icons/google.png";
 import { StaticImageData } from "next/image";
+
+import Link from "next/link";
+import { SignInValidation } from "@/components/Formik/SigninValidation";
 
 interface ISignInProps {
   providerId: string | undefined;
   title: string;
   icon: StaticImageData;
+  type: string;
 }
 
 const SignIn: React.FunctionComponent<ISignInProps> = async () => {
-
   const data = await getProvidersContext();
   const providers = Object.values(data);
- 
+
   return (
     <div className={styles.signin}>
       <div className={styles.signin__input}>
-        <h1>Connexion</h1>
-        <span className={styles.label}>E-mail</span>
-        <Input type="email" name="" />
-        <span className={styles.label}>Mot de passe</span>
-        <Input type="password" name="" />
+        <SignInValidation />
       </div>
 
-      <div className={styles.signin__submit}>
-        <p>Mot de passe oublie</p>
-        <Button text="Se connecter" />
-
-        <span>Creer un compte</span>
-      </div>
       <div className={styles.login__socials}>
-        <span className={styles.or}>Or continue with</span>
+        <span className={styles.or}>ou continuer</span>
         <div className={styles.login__socials_wrap}>
           {providers.map((provider) => (
             <div key={provider?.google.id}>
               <GoogleBtnProvider
-                title={`Sign in with ${provider?.google.name}`}
+                title={`Connectez-vous avec ${provider?.google.name}`}
                 providerId={provider?.google.id}
                 icon={googleIcon}
               ></GoogleBtnProvider>

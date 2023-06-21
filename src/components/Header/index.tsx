@@ -28,13 +28,22 @@ const Header: React.FunctionComponent<IAppProps> = () => {
   return (
     <>
       <div className={styles.header}>
-        <div className={styles.header__top}>
+        <nav className={styles.header__top}>
           <Link href="#">Notre selection d’articles en promotion</Link>
           <Link href="#">Business Solutions</Link>
           <Link href="#">Services</Link> <Link href="#">Actions Enoprimes</Link>
-        </div>
+        </nav>
         <div className={styles.header__main}>
-          <Image className={styles.header__main__logo} src={logo} alt="logo" />
+          <Link href="/">
+            <Image
+              width={200}
+              height={100}
+              priority={true}
+              className={styles.header__main__logo}
+              src={logo}
+              alt="logo"
+            />
+          </Link>
           <button
             onClick={(e) => handleMenuToggle(e)}
             className={styles.header__menu}
@@ -54,7 +63,7 @@ const Header: React.FunctionComponent<IAppProps> = () => {
                 <FaUser />
               </span>
             </Link>
-            <Link href="/register">
+            <Link href="#">
               <span className={styles.header__wrapper__icons}>
                 <RiShoppingCart2Fill />
                 <span className={styles.header__cart__count}>

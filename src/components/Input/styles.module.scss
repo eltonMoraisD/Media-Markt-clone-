@@ -3,5 +3,39 @@
   outline: none;
   width: 100%;
   padding: 5px;
-  
+  margin-top: 8px;
+
+}
+
+.error {
+  border: 1px solid $error-color-primary !important;
+  background-color: $error-color-secondary !important;
+
+}
+
+.error__message {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 8px;
+  &:before {
+    position: absolute;
+    content: "!";
+    text-align: center;
+    font-size: 10px; //14
+    color: $color-white;
+    font-weight: bold;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: $error-color-primary;
+  }
+
+  span {
+    font-size: 12px;
+    margin-left: 1.3rem;
+    color: #272422;
+  }
+
 }

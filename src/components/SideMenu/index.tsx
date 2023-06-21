@@ -20,6 +20,9 @@ const SideMenu: React.FunctionComponent<IAppProps> = ({
         <div className={styles.side__container}>
           <div className={styles.side__container__header}>
             <Image
+              width={200}
+              height={100}
+              priority={true}
               className={styles.side__container__header__logo}
               src={logo}
               alt="logo"
