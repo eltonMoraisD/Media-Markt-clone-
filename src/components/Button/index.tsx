@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 
 interface IButtonProps {
   text: string;
-  type: string;
+  type: "button" | "submit";
 }
 
 const Button: React.FunctionComponent<IButtonProps> = ({ text, type }) => {

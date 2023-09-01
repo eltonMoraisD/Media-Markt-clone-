@@ -1,3 +1,9 @@
+import Baner from "@/components/Baner";
+
 export default function Home() {
-  return <></>;
+  return (
+    <main>
+      <Baner></Baner>
+    </main>
+  );
 }

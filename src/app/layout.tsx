@@ -28,34 +28,6 @@ export default async function RootLayout({
           <Header />
           {children}
           <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
-          <Footer />
         </SessionProviderCustom>
       </body>
     </html>
