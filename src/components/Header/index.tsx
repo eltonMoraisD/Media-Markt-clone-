@@ -27,7 +27,7 @@ const Header: React.FunctionComponent<IAppProps> = () => {
 
   return (
     <>
-      <div className={styles.header}>
+      <header className={styles.header}>
         <nav className={styles.header__top}>
           <Link href="#">Notre selection d’articles en promotion</Link>
           <Link href="#">Business Solutions</Link>
@@ -73,7 +73,7 @@ const Header: React.FunctionComponent<IAppProps> = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </header>
       {isOpen && (
         <>
           <SideMenu handleMenuToggle={handleMenuToggle} isOpen={isOpen} />

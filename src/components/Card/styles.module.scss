@@ -1,0 +1,22 @@
+.container {
+  &__card {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .card {
+    display: flex;
+    gap: 25px;
+    display: flex;
+    flex-direction: row;
+
+    &__list {
+      border-radius: 8px 8px;
+      border: 1px solid #cfcbca;
+    }
+
+  }
+}
