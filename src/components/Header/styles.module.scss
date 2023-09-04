@@ -1,9 +1,7 @@
 .header {
   background: $header-color;
   line-height: 1;
-
   &__top {
-
     // position: relative;
     display: flex;
     max-width: 1200px;
@@ -35,14 +33,12 @@
   // }
 
   &__main {
-
+    max-width: 1250px;
     padding: 0px 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
     margin: 0 auto;
-
 
     @media (max-width: 750px) {
       display: flex;

@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import Card from "../Card";
 
-const products = [
+const productCategories = [
   {
     id: 1,
     img: "https://mediamarkt.lu/cdn/shop/files/Sans_titre-2_ee633b7c-3274-4c22-ab22-c068e9bd2cd0.png?v=1693324759",
@@ -39,11 +39,11 @@ const products = [
 const ProductCategories: React.FC = () => {
   return (
     <div className={styles.card__container}>
-      {products.map((product) => (
-        <Card key={product.id}>
+      {productCategories.map((categories) => (
+        <Card key={categories.id}>
           <div className={styles.card__content}>
-            <Image width={0} height={0} src={product.img} alt="" />
-            <p>{product.title}</p>
+            <Image width={0} height={0} src={categories.img} alt="product" />
+            <p>{categories.title}</p>
           </div>
         </Card>
       ))}
