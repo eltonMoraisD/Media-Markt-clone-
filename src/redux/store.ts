@@ -19,7 +19,7 @@ const config = {
 const rootReducers = persistReducer(config, reducers)
 
 export const store = configureStore({
-  reducer: rootReducers,// This is where we add reducers.
+  reducer: rootReducers,
   devTools: process.env.NODE_ENV !== "production",
   middleware: [thunk]
 });

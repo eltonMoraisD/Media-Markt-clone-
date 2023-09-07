@@ -51,12 +51,12 @@ const Header: React.FunctionComponent<IAppProps> = () => {
             <GiHamburgerMenu /> <span>Nos categories</span>
           </button>
 
-          <div className={styles.header__search}>
+          <form action="" className={styles.header__search}>
             <button className={styles.header__search__btn}>
               <RiSearch2Line />
             </button>
             <input type="text" placeholder="Rechercer" />
-          </div>
+          </form>
           <div className={styles.header__wrapper}>
             <Link href="/signin">
               <span className={styles.header__wrapper__icons}>

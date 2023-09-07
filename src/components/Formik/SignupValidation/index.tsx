@@ -9,7 +9,6 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 
 interface ISignUpCustom {
-  // handleChange: React.ChangeEvent<HTMLInputElement>;
   prenom: string;
   name: string;
   email: string;
@@ -33,19 +32,11 @@ export const SignUpValidation: NextPage = () => {
   };
 
   const registerValidation = Yup.object({
-    // name: Yup.string()
-    //   .required("What is your name?")
-    //   .min(2, "First name must be between 2 and 16 characters")
-    //   .max(16, "First name must be between 2 and 16 characters")
-    //   .matches(/^[aA-zZ]/, "Numbers and special characters are not allowed"),
-
     email: Yup.string()
       .required("E-mail ne peut pas rester vide")
       .email("Enter a valid email address."),
-
     password: Yup.string()
       .required("Mot de passe ne peut pas rester vide.")
-
       .min(6, "Le mot de passe doit comporter au moins 6 caractères.")
       .max(36, "Le mot de passe ne doit pas comporter plus de 36 caractères"),
   });
