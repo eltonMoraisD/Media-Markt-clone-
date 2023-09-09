@@ -2,11 +2,17 @@
 import styles from "../../../app/signup/styles.module.scss";
 
 import { useState } from "react";
-import { Form, Formik, useField, useFormikContext } from "formik";
+import { Form, Formik } from "formik";
 import type { NextPage } from "next";
 import * as Yup from "yup";
+import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import { createUser } from "@/helpers/createUsers";
+import Loader from "@/components/Loader";
 
 interface ISignUpCustom {
   prenom: string;
@@ -22,13 +28,34 @@ export const SignUpValidation: NextPage = () => {
     email: "",
     password: "",
   };
+  const [loading, setLoading] = useState<boolean>(false);
   const [user, setUser] = useState(initialValues);
   const { email, name, password, prenom } = user;
+
+  const router = useRouter();
 
   const handleChange = (e: React.FormEvent<HTMLInputElement> | any): void => {
     e.preventDefault();
     const { name, value } = e.currentTarget;
     setUser({ ...user, [name]: value });
+  };
+
+  const signUpHandler = async () => {
+    setLoading(true);
+
+    const users: any = await createUser(prenom, name, email, password);
+    const response = await users.json();
+
+    console.log(response);
+
+    if (users.ok) {
+      setLoading(false);
+      return router.replace("/signin");
+    } else {
+      setLoading(false);
+      setUser(initialValues);
+      toast.error(response.message);
+    }
   };
 
   const registerValidation = Yup.object({
@@ -42,56 +69,66 @@ export const SignUpValidation: NextPage = () => {
   });
 
   return (
-    <Formik
-      enableReinitialize={true}
-      initialValues={{
-        email,
-        name,
-        password,
-        prenom,
-      }}
-      validationSchema={registerValidation}
-      onSubmit={handleChange}
-    >
-      {(form) => (
-        <Form>
-          <h1>Créer un compte</h1>
-          {!form.isValid ? (
-            <div className={styles.error__popup}>
-              <span>Merci de bien vouloir ajuster les éléments suivants :</span>
+    <>
+      <Formik
+        enableReinitialize={true}
+        initialValues={{
+          email,
+          name,
+          password,
+          prenom,
+        }}
+        validationSchema={registerValidation}
+        onSubmit={signUpHandler}
+      >
+        {(form) => (
+          <Form>
+            <h1>Créer un compte</h1>
+            {!form.isValid ? (
+              <div className={styles.error__popup}>
+                <span>
+                  Merci de bien vouloir ajuster les éléments suivants :
+                </span>
 
-              <ul>
-                {form.errors.email ? <li>{form.errors.email}</li> : ""}
-                {form.errors.password ? <li>{form.errors.password}</li> : ""}
-              </ul>
+                <ul>
+                  {form.errors.email ? <li>{form.errors.email}</li> : ""}
+                  {form.errors.password ? <li>{form.errors.password}</li> : ""}
+                </ul>
+              </div>
+            ) : (
+              ""
+            )}
+            <label htmlFor="name" className={styles.label}>
+              Prénom
+            </label>
+            <Input handleChange={handleChange} type="text" name="name" />
+
+            <label htmlFor="name" className={styles.label}>
+              Nom de famille
+            </label>
+            <Input handleChange={handleChange} type="text" name="prenom" />
+
+            <label htmlFor="name" className={styles.label}>
+              Adresse e-mail
+            </label>
+            <Input handleChange={handleChange} type="email" name="email" />
+
+            <label htmlFor="name" className={styles.label}>
+              Mot de passe
+            </label>
+            <Input
+              handleChange={handleChange}
+              type="password"
+              name="password"
+            />
+            <div className={styles.signup__submit}>
+              <Button text="Créer" type="submit" />
             </div>
-          ) : (
-            ""
-          )}
-          <label htmlFor="name" className={styles.label}>
-            Prénom
-          </label>
-          <Input handleChange={handleChange} type="text" name="name" />
-
-          <label htmlFor="name" className={styles.label}>
-            Nom de famille
-          </label>
-          <Input handleChange={handleChange} type="text" name="prenom" />
-
-          <label htmlFor="name" className={styles.label}>
-            Adresse e-mail
-          </label>
-          <Input handleChange={handleChange} type="email" name="email" />
-
-          <label htmlFor="name" className={styles.label}>
-            Mot de passe
-          </label>
-          <Input handleChange={handleChange} type="password" name="password" />
-          <div className={styles.signup__submit}>
-            <Button text="Créer" type="submit" />
-          </div>
-        </Form>
-      )}
-    </Formik>
+          </Form>
+        )}
+      </Formik>
+      <ToastContainer />
+      {loading && <Loader loading={loading} />}
+    </>
   );
 };
