@@ -1,7 +1,7 @@
-
 export const createUser = async (firstName: string, lastName: string, email: string, password: string) => {
   try {
-    const data = fetch("http://localhost:3000/api/auth/signup", {
+
+    const data = await fetch(`${process.env.BASE_URL}/api/auth/signup`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -14,10 +14,10 @@ export const createUser = async (firstName: string, lastName: string, email: str
         password
       })
     })
-
     return data
 
-  } catch (error) {
+  } catch (error: any) {
+    // throw new Error(`${error.message}`)
     return error
   }
 }

@@ -6,7 +6,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-
+  env: {
+    BASE_URL: process.env.BASE_URL,
+  },
   sassOptions: {
     includePaths: [path.join(__dirname, "src/styles")],
     prependData: `@import "./base.scss";`,

@@ -4,7 +4,6 @@ import GoogleBtnProvider from "./googleBtnProvider";
 import googleIcon from "../../assets/icons/google.png";
 import { StaticImageData } from "next/image";
 
-import Link from "next/link";
 import { SignInValidation } from "@/components/Formik/SigninValidation";
 
 interface ISignInProps {
@@ -19,25 +18,27 @@ const SignIn: React.FunctionComponent<ISignInProps> = async () => {
   const providers = Object.values(data);
 
   return (
-    <div className={styles.signin}>
-      <div className={styles.signin__input}>
-        <SignInValidation />
-      </div>
-
-      <div className={styles.login__socials}>
-        <span className={styles.or}>ou continuer</span>
-        <div className={styles.login__socials_wrap}>
-          {providers.map((provider) => (
-            <div key={provider?.google.id}>
-              <GoogleBtnProvider
-                title={`Connectez-vous avec ${provider?.google.name}`}
-                providerId={provider?.google.id}
-                icon={googleIcon}
-              ></GoogleBtnProvider>
+    <div className={styles.group}>
+      <SignInValidation>
+        <div className={styles.signin}>
+          <div className={styles.signin__input}>
+            <div className={styles.login__socials}>
+              <span className={styles.or}>ou continuer</span>
+              <div className={styles.login__socials_wrap}>
+                {providers.map((provider) => (
+                  <div key={provider?.google.id}>
+                    <GoogleBtnProvider
+                      title={`Connectez-vous avec ${provider?.google.name}`}
+                      providerId={provider?.google.id}
+                      icon={googleIcon}
+                    ></GoogleBtnProvider>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
+      </SignInValidation>
     </div>
   );
 };

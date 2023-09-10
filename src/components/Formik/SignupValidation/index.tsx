@@ -13,6 +13,7 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import { createUser } from "@/helpers/createUsers";
 import Loader from "@/components/Loader";
+import { signIn } from "next-auth/react";
 
 interface ISignUpCustom {
   prenom: string;
@@ -46,11 +47,18 @@ export const SignUpValidation: NextPage = () => {
     const users: any = await createUser(prenom, name, email, password);
     const response = await users.json();
 
-    console.log(response);
-
     if (users.ok) {
       setLoading(false);
-      return router.replace("/signin");
+
+      //Automatically login after user is created with success
+      const options = {
+        redirect: false,
+        email: email,
+        password: email,
+      };
+      await signIn("credentials", options);
+
+      return router.replace("/");
     } else {
       setLoading(false);
       setUser(initialValues);

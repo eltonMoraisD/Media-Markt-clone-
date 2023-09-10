@@ -3,12 +3,13 @@ import { SessionProvider } from "next-auth/react";
 
 interface ISessionProviderCustomProps {
   children: React.ReactNode;
+  session: any;
 }
 
 const SessionProviderCustom: React.FunctionComponent<
   ISessionProviderCustomProps
-> = ({ children }) => {
-  return <SessionProvider>{children}</SessionProvider>;
+> = ({ children, session }) => {
+  return <SessionProvider session={session}>{children}</SessionProvider>;
 };
 
 export default SessionProviderCustom;

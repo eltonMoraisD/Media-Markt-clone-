@@ -8,6 +8,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 import SessionProviderCustom from "./NextAuthProviders/SessionProviders";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
 const inter = Source_Sans_Pro({ weight: "400", subsets: ["latin"] });
 
@@ -21,21 +23,19 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const session = await getServerSession(authOptions);
-  // console.log("mememe", session);
+  const session = await getServerSession(authOptions);
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/*  TO DO - need to pass the session to the session provider */}
-        <Providers>
-          <SessionProviderCustom>
+        <SessionProviderCustom session={session}>
+          <Providers>
             <Top />
             <Header />
             {children}
             <Footer />
-          </SessionProviderCustom>
-        </Providers>
+          </Providers>
+        </SessionProviderCustom>
       </body>
     </html>
   );

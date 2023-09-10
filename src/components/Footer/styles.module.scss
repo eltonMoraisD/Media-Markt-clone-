@@ -1,1 +1,5 @@
-.footer__container {}
+.footer__container {
+  border: 1px solid blue;
+  // height: 100vh;
+  background-color: $footer-color;
+}
