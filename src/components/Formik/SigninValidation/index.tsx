@@ -29,7 +29,7 @@ export const SignInValidation = ({
   children: React.ReactNode;
 }) => {
   const { data: session } = useSession();
-  // console.log("session", session);
+  console.log("session", session);
 
   const initialValues: ISignInProps = {
     login_email: "",

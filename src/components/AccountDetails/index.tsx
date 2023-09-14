@@ -5,17 +5,17 @@ import React from "react";
 import Button from "../Button";
 import { signOut } from "next-auth/react";
 
-const AccountDetails: React.FC = () => {
+const AccountDetails = () => {
   const logout = async () => {
-    window.location.href = "/";
     await signOut();
+    window.location.href = "/"; //this could be improved
   };
   return (
     <div className={styles.container}>
       <div className={styles.container__group}>
         <div className={styles.title}>
           <h1>Mon compte</h1>
-          <p onClick={logout}>Se deconnecter</p>
+          <p onClick={() => logout()}>Se deconnecter</p>
         </div>
         <div className={styles.details}>
           <div className={styles.details__history}>

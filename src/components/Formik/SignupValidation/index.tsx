@@ -58,7 +58,7 @@ export const SignUpValidation: NextPage = () => {
       };
       await signIn("credentials", options);
 
-      return router.replace("/");
+      router.push("/");
     } else {
       setLoading(false);
       setUser(initialValues);
