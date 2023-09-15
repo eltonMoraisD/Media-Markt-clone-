@@ -122,7 +122,9 @@ export const SignUpValidation: NextPage = () => {
             <Input handleChange={handleChange} type="email" name="email" />
 
             <label htmlFor="name" className={styles.label}>
-              Mot de passe
+              Mot de passe (Le mot de passe doit contenir au moins 8 caractères
+              et inclure au moins un chiffre, un caractère spécial et une lettre
+              majuscule.)
             </label>
             <Input
               handleChange={handleChange}

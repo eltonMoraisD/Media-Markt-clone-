@@ -1,9 +1,9 @@
 .signup {
   // @include alignItemsCenter;
   flex-direction: column;
-  max-width: 740px;
+  max-width: 650px;
   margin: 0 auto;
-  padding: 48px;
+  // padding: 48px;
 
   &__input {
     display: flex;

@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 600px;
+  margin-bottom: 40px;
+  &__all {
+
+    margin-top: 80px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100%;
+
+    &__group {
+      .title {
+        font-size: 28.8px;
+        text-align: center;
+        margin-bottom: 10px;
+        font-style: normal;
+      }
+
+      p {
+        text-align: center;
+        font-size: 14px;
+        color: #272422;
+        margin-bottom: 15px;
+      }
+
+      label {
+        color: #272422;
+      }
+
+      input {
+        margin-bottom: 20px;
+      }
+    }
+
+  }
+}
