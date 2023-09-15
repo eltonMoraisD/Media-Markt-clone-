@@ -4,6 +4,7 @@ import styles from "./styles.module.scss";
 import React from "react";
 import Button from "../Button";
 import { signOut } from "next-auth/react";
+import { getSession } from "next-auth/react";
 
 const AccountDetails = () => {
   const logout = async () => {

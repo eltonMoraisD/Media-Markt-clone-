@@ -5,7 +5,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import db from "../../../../utils/db"
 import { signInUser } from "../../../../helpers/signInUser"
 import User from "../../../../models/User"
-import session from "redux-persist/es/storage/session";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "../lib/mongodb";
 
@@ -15,7 +14,6 @@ interface ICredentials {
   email: string,
   password: string,
 }
-
 
 
 export const authOptions: NextAuthOptions = {

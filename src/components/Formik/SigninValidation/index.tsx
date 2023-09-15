@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 import styles from "../../../app/signin/styles.module.scss";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,7 +12,7 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/Loader";
 import { ToastContainer, toast } from "react-toastify";
-import UserSettings from "@/components/AccountDetails";
+import AccountDetails from "@/components/AccountDetails";
 
 interface ISignInProps {
   login_email: string;
@@ -25,11 +24,12 @@ interface ISignInProps {
 
 export const SignInValidation = ({
   children,
+  csrfToken,
 }: {
   children: React.ReactNode;
+  csrfToken: string;
 }) => {
   const { data: session } = useSession();
-  console.log("session", session);
 
   const initialValues: ISignInProps = {
     login_email: "",
@@ -45,7 +45,7 @@ export const SignInValidation = ({
 
   const router = useRouter();
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement> | any): void => {
+  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { name, value } = e.currentTarget;
     setUser({ ...user, [name]: value });
@@ -81,7 +81,7 @@ export const SignInValidation = ({
   return (
     <>
       {session ? (
-        <UserSettings />
+        <AccountDetails />
       ) : (
         <div className={styles.container}>
           <Formik
@@ -94,9 +94,9 @@ export const SignInValidation = ({
             onSubmit={signInHandler}
           >
             {(form) => (
-              <Form>
+              <Form method="post" action="/api/auth/signin/email">
                 <h1 className={styles.title}>Connexion</h1>
-                {!form.isValid ? (
+                {!form.isValid && (
                   <div className={styles.error__popup}>
                     <span>
                       Merci de bien vouloir ajuster les éléments suivants :
@@ -105,9 +105,12 @@ export const SignInValidation = ({
                       <li>E-mail ou mot de passe incorrect.</li>
                     </ul>
                   </div>
-                ) : (
-                  ""
                 )}
+                <input
+                  name="csrfToken"
+                  type="hidden"
+                  defaultValue={csrfToken}
+                />
                 <label htmlFor="name" className={styles.label}>
                   E-mail
                 </label>
@@ -124,7 +127,9 @@ export const SignInValidation = ({
                   name="login_password"
                 />
                 <div className={styles.signin__submit}>
-                  <p>Mot de passe oublie</p>
+                  <Link className={styles.btn_link} href="/recovery">
+                    Mot de passe oublié ?
+                  </Link>
                   <Button text="Se connecter" type="submit" />
                   <Link href="/signup">Creer un compte</Link>
                 </div>
@@ -133,7 +138,6 @@ export const SignInValidation = ({
           </Formik>
           {children}
           <ToastContainer />
-
           {loading && <Loader loading={loading} />}
         </div>
       )}

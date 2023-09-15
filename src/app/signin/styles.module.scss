@@ -59,7 +59,12 @@
       flex-direction: column;
       margin-top: 1rem;
       gap: 1rem;
-      p,
+     
+      .btn_link {
+        cursor: pointer;
+      }
+
+      a,
       span {
         font-size: 14px;
       }

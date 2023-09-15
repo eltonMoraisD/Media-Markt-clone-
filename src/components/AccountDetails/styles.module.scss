@@ -1,3 +1,5 @@
+@import url(https://db.onlinewebfonts.com/c/4313d7354c9b8afe25e1a98773ade48d?family=MM+Headline+Pro+WebTT+Regular+Regular);
+
 .container {
   width: 100%;
   padding: 8px 10px;
@@ -6,9 +8,12 @@
   &__group {
     max-width: 1110px;
     margin: 0 auto;
+
     .title {
       text-align: center;
-
+      h1 {
+        font-family: "MM Headline Pro WebTT Regular Regular";
+      }
       p {
         cursor: pointer;
       }
@@ -17,30 +22,36 @@
     .details {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       // padding: 10px 20px;
       button {
         width: 100%;
 
       }
+
       &__history {
-        width: 400px;
+        width: 500px;
         padding: 15px;
-        h1{
+
+        h1 {
+          font-family: "MM Headline Pro WebTT Regular Regular";
           margin-bottom: 16px;
           font-style: italic;
-          font-weight: 700;
+          font-weight: 900;
           line-height: 1.2;
         }
       }
+
       &__account {
         width: 400px;
         padding: 15px;
+
         h1 {
+          font-family: "MM Headline Pro WebTT Regular Regular";
           margin-bottom: 16px;
           font-style: italic;
           font-weight: 700;
           line-height: 1.2;
-          // font-family: 'Oswald';
         }
       }
 

@@ -1,12 +1,10 @@
 import { MongoClient, MongoClientOptions } from "mongodb";
 
-
 if (!process.env.MONGODB_URL) {
   throw new Error('Invalid/Missing environment variable: "MONGODB_URL"');
 }
 
 const uri = process.env.MONGODB_URL;
-
 
 const options: MongoClientOptions = {
 

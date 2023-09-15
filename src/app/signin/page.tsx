@@ -1,10 +1,12 @@
 import styles from "./styles.module.scss";
-import { getProviders } from "next-auth/react";
+
+import { getProviders, getCsrfToken } from "next-auth/react";
+
 import GoogleBtnProvider from "./googleBtnProvider";
 import googleIcon from "../../assets/icons/google.png";
 import { StaticImageData } from "next/image";
-
 import { SignInValidation } from "@/components/Formik/SigninValidation";
+import { cookies } from "next/dist/client/components/headers";
 
 interface ISignInProps {
   providerId: string | undefined;
@@ -17,9 +19,15 @@ const SignIn: React.FunctionComponent<ISignInProps> = async () => {
   const data = await getProvidersContext();
   const providers = Object.values(data);
 
+  const csrfToken = cookies()
+    .get("next-auth.csrf-token")
+    ?.value.split("|")[0] as string;
+
+  // const csrfToken2 = await getCsrfToken();
+
   return (
     <div className={styles.group}>
-      <SignInValidation>
+      <SignInValidation csrfToken={csrfToken}>
         <div className={styles.signin}>
           <div className={styles.signin__input}>
             <div className={styles.login__socials}>

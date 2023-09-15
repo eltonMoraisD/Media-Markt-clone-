@@ -35,7 +35,7 @@ export const SignUpValidation: NextPage = () => {
 
   const router = useRouter();
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement> | any): void => {
+  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { name, value } = e.currentTarget;
     setUser({ ...user, [name]: value });
@@ -44,7 +44,7 @@ export const SignUpValidation: NextPage = () => {
   const signUpHandler = async () => {
     setLoading(true);
 
-    const users: any = await createUser(prenom, name, email, password);
+    const users = await createUser(prenom, name, email, password);
     const response = await users.json();
 
     if (users.ok) {
