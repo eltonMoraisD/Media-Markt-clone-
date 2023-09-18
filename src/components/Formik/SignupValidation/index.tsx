@@ -1,5 +1,6 @@
 "use client";
 import styles from "../../../app/signup/styles.module.scss";
+// import "react-toastify/dist/ReactToastify.css";
 
 import { useState } from "react";
 import { Form, Formik } from "formik";
@@ -7,7 +8,6 @@ import type { NextPage } from "next";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 import Button from "@/components/Button";
 import Input from "@/components/Input";
@@ -49,7 +49,6 @@ export const SignUpValidation: NextPage = () => {
 
     if (users.ok) {
       setLoading(false);
-
       //Automatically login after user is created with success
       const options = {
         redirect: false,
@@ -58,7 +57,7 @@ export const SignUpValidation: NextPage = () => {
       };
       await signIn("credentials", options);
 
-      router.push("/");
+      return router.push("/");
     } else {
       setLoading(false);
       setUser(initialValues);
@@ -78,6 +77,8 @@ export const SignUpValidation: NextPage = () => {
 
   return (
     <>
+      {loading && <Loader loading={loading} />}
+
       <Formik
         enableReinitialize={true}
         initialValues={{
@@ -138,7 +139,6 @@ export const SignUpValidation: NextPage = () => {
         )}
       </Formik>
       <ToastContainer />
-      {loading && <Loader loading={loading} />}
     </>
   );
 };

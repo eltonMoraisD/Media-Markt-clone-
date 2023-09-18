@@ -1,5 +1,6 @@
-export const emailTemplate = () => {
+export const resetPasswordTemplate = (to: string, url: string) => {
   return `
+
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -13,17 +14,17 @@ export const emailTemplate = () => {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="telephone=no" name="format-detection">
   <title>New Template 2</title><!--[if (mso 16)]>
-  <style type="text/css">
-  a {text-decoration: none;}
-  </style>
-  <![endif]--><!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]--><!--[if gte mso 9]>
-  <xml>
-  <o:OfficeDocumentSettings>
-  <o:AllowPNG></o:AllowPNG>
-  <o:PixelsPerInch>96</o:PixelsPerInch>
-  </o:OfficeDocumentSettings>
-  </xml>
-  <![endif]--><!--[if !mso]><!-- -->
+<style type="text/css">
+a {text-decoration: none;}
+</style>
+<![endif]--><!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]--><!--[if gte mso 9]>
+<xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG></o:AllowPNG>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+<![endif]--><!--[if !mso]><!-- -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"><!--<![endif]-->
   <style type="text/css">
     #outlook a {
@@ -54,13 +55,17 @@ export const emailTemplate = () => {
       mso-hide: all;
     }
 
+    [data-ogsb] .es-button.es-button-1 {
+      padding: 30px 5px !important;
+    }
+
     @media only screen and (max-width:600px) {
 
       p,
       ul li,
       ol li,
       a {
-        line-height: 150% !important
+        line-height: 100% !important
       }
 
       h1,
@@ -170,13 +175,16 @@ export const emailTemplate = () => {
       }
 
       .es-button-border {
-        display: inline-block !important
+        display: block !important
       }
 
       a.es-button,
       button.es-button {
         font-size: 16px !important;
-        display: inline-block !important
+        display: block !important;
+        padding-bottom: 0px !important;
+        padding-right: 0px !important;
+        padding-left: 0px !important
       }
 
       .es-adaptive table,
@@ -290,10 +298,10 @@ export const emailTemplate = () => {
 <body
   style="width:100%;font-family:arial, 'helvetica neue', helvetica, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0">
   <div class="es-wrapper-color" style="background-color:#FAFAFA"><!--[if gte mso 9]>
-  <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
-  <v:fill type="tile" color="#fafafa"></v:fill>
-  </v:background>
-  <![endif]-->
+<v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+<v:fill type="tile" color="#fafafa"></v:fill>
+</v:background>
+<![endif]-->
     <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0"
       style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top;background-color:#FAFAFA">
       <tr>
@@ -306,13 +314,11 @@ export const emailTemplate = () => {
                   style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;border-top:1px solid #efefef;border-right:1px solid #efefef;border-left:1px solid #efefef;width:600px">
                   <tr>
                     <td align="left"
-                      style="Margin:0;padding-bottom:10px;padding-top:20px;padding-left:20px;padding-right:20px"><!--[if mso]><table style="width:558px" cellpadding="0"
-  cellspacing="0"><tr><td style="width:269px" valign="top"><![endif]-->
-                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
-                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                      style="Margin:0;padding-bottom:10px;padding-top:20px;padding-left:20px;padding-right:20px">
+                      <table cellpadding="0" cellspacing="0" width="100%"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                         <tr>
-                          <td class="es-m-p0r es-m-p20b" valign="top" align="center"
-                            style="padding:0;Margin:0;width:269px">
+                          <td class="es-m-p0r" valign="top" align="center" style="padding:0;Margin:0;width:558px">
                             <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
                               style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                               <tr>
@@ -324,48 +330,6 @@ export const emailTemplate = () => {
                                       alt="Logo"
                                       style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"
                                       title="Logo" width="244"></a></td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                      <!--[if mso]></td><td style="width:20px"></td><td style="width:269px" valign="top"><![endif]-->
-                      <table cellpadding="0" cellspacing="0" align="right"
-                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                        <tr>
-                          <td align="left" style="padding:0;Margin:0;width:269px">
-                            <table cellpadding="0" cellspacing="0" width="100%"
-                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr>
-                                <td align="center" style="padding:0;Margin:0;display:none"></td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table><!--[if mso]></td></tr></table><![endif]-->
-                    </td>
-                  </tr>
-                  <tr>
-                    <td align="left" style="padding:0;Margin:0">
-                      <table cellpadding="0" cellspacing="0" width="100%"
-                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                        <tr>
-                          <td align="center" valign="top" style="padding:0;Margin:0;width:598px">
-                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
-                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr>
-                                <td align="center"
-                                  style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px;font-size:0">
-                                  <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0"
-                                    role="presentation"
-                                    style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr>
-                                      <td
-                                        style="padding:0;Margin:0;border-bottom:1px solid #efefef;background:none;height:1px;width:100%;margin:0px">
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </td>
                               </tr>
                             </table>
                           </td>
@@ -385,7 +349,35 @@ export const emailTemplate = () => {
                   style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;border-right:1px solid #efefef;border-left:1px solid #efefef;width:600px"
                   cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center">
                   <tr>
-                    <td align="left" style="padding:20px;Margin:0">
+                    <td align="left" style="padding:0;Margin:0">
+                      <table width="100%" cellspacing="0" cellpadding="0"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                        <tr>
+                          <td class="es-m-p0r es-m-p20b" valign="top" align="center"
+                            style="padding:0;Margin:0;width:598px">
+                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                              <tr>
+                                <td align="left" class="es-m-txt-l"
+                                  style="padding:0;Margin:0;padding-bottom:10px;padding-left:10px;padding-top:20px">
+                                  <h2
+                                    style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:Montserrat, sans-serif;font-size:20px;font-style:normal;font-weight:bold;color:#000000">
+                                    Réinitialiser votre mot de passe</h2>
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;color:#000000;font-size:20px">
+                                    <br>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left"
+                      style="Margin:0;padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:30px">
                       <table width="100%" cellspacing="0" cellpadding="0"
                         style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                         <tr>
@@ -397,52 +389,93 @@ export const emailTemplate = () => {
                                 <td align="left" class="es-m-txt-l"
                                   style="padding:0;Margin:0;padding-bottom:10px;padding-top:20px">
                                   <h2
-                                    style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:Montserrat, sans-serif;font-size:24px;font-style:normal;font-weight:bold;color:#333333">
-                                    <strong>Bienvenue chez MediaMarkt Luxembourg&nbsp;</strong></h2>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td align="left" class="es-m-txt-l h-auto" height="440"
-                                  style="padding:0;Margin:0;padding-bottom:10px;padding-top:20px">
+                                    style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:Montserrat, sans-serif;font-size:20px;font-style:normal;font-weight:bold;color:#867777">
+                                    Bonjour,</h2>
                                   <p
-                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:34px;color:#867f7f;font-size:28px">
-                                    Bonjour,</p>
-                                  <p
-                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:34px;color:#867f7f;font-size:28px">
-                                    <br></p>
-                                  <p
-                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:34px;color:#867f7f;font-size:28px">
-                                    Bienvenue dans votre compte client Mediamarkt Luxembourg ! Merci pour votre
-                                    confiance. Si vous rencontrez un problème avec compte client, merci de prendre
-                                    contact avec <a href="mailto:seesh@saturn.lu" target="_blank"
-                                      style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#cc0000;font-size:28px">seesh@saturn.lu</a>
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;color:#867777;font-size:20px">
+                                    <br>
                                   </p>
                                   <p
-                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:34px;color:#867f7f;font-size:28px">
-                                    <br></p>
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;color:#867777;font-size:20px">
+                                    Voici le lien pour réinitialiser le mot de passe de votre ccompte client Mediamarkt
+                                  </p>
                                   <p
-                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:34px;color:#867f7f;font-size:28px">
-                                    Meilleures salutations,<br>Mediamarkt Luxembourg</p>
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;color:#867777;font-size:20px">
+                                    <br>
+                                  </p>
                                 </td>
-                              </tr>
-                              <tr>
-                                <td align="left" class="h-auto" valign="top" height="72" style="padding:0;Margin:0"><!--[if mso]><a href="https://viewstripo.email" target="_blank" hidden>
-  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="https://viewstripo.email"
-  style="height:71px; v-text-anchor:middle; width:321px" arcsize="6%" stroke="f" fillcolor="#cc0000">
-  <w:anchorlock></w:anchorlock>
-  <center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:18px; font-weight:400; line-height:18px; mso-text-raise:1px'>Visitez notre boutique</center>
-  </v:roundrect></a>
-  <![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border"
-                                    style="border-style:solid;border-color:#2CB543;background:#cc0000;border-width:0px;display:inline-block;border-radius:4px;width:auto;mso-hide:all"><a
-                                      href="https://viewstripo.email" class="es-button es-button-1625582400885 msohide"
-                                      target="_blank"
-                                      style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:18px;padding:25px 65px;display:inline-block;background:#cc0000;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;mso-padding-alt:0;mso-border-alt:10px solid #cc0000;mso-hide:all">Visitez
-                                      notre boutique</a></span><!--<![endif]--></td>
                               </tr>
                             </table>
                           </td>
                         </tr>
                       </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left" style="padding:0;Margin:0;padding-left:5px;padding-top:15px;padding-right:35px">
+                      <!--[if mso]><table style="width:558px" cellpadding="0" cellspacing="0"><tr><td style="width:278px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr>
+                          <td class="es-m-p0r es-m-p20b" align="center" style="padding:0;Margin:0;width:268px">
+                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                              <tr>
+                                <td align="center" class="h-auto" valign="middle" height="113"
+                                  style="padding:0;Margin:0"><!--[if mso]><a href="http://localhost:3000/reset" target="_blank" hidden>
+<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="http://localhost:3000/reset"
+style="height:81px; v-text-anchor:middle; width:268px" arcsize="6%" stroke="f" fillcolor="#cc0000">
+<w:anchorlock></w:anchorlock>
+<center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:18px; font-weight:400; line-height:18px; mso-text-raise:1px'>Reinitializer votre mot de passe</center>
+</v:roundrect></a>
+<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border"
+                                    style="border-style:solid;border-color:#2CB543;background:#cc0000;border-width:0px;display:block;border-radius:5px;width:auto;mso-hide:all"><a
+                                      href=${url} class="es-button es-button-1 msohide" target="_blank"
+                                      style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:18px;padding:30px 5px;display:block;background:#cc0000;border-radius:5px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;mso-padding-alt:0;mso-border-alt:10px solid #cc0000;mso-hide:all">Reinitializer
+                                      votre mot de passe</a></span><!--<![endif]--></td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="es-hidden" style="padding:0;Margin:0;width:10px"></td>
+                        </tr>
+                      </table><!--[if mso]></td><td style="width:68px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-left" align="left"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr>
+                          <td class="es-m-p20b" align="center" style="padding:0;Margin:0;width:68px">
+                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                              <tr>
+                                <td align="right" class="h-auto" valign="middle" height="95"
+                                  style="padding:0;Margin:0;padding-top:15px">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;color:#999999;font-size:20px">
+                                    ou</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <!--[if mso]></td><td style="width:10px"></td><td style="width:202px" valign="top"><![endif]-->
+                      <table cellpadding="0" cellspacing="0" class="es-right" align="right"
+                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                        <tr>
+                          <td align="center" style="padding:0;Margin:0;width:202px">
+                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
+                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                              <tr>
+                                <td align="left"
+                                  style="padding:0;Margin:0;padding-left:5px;padding-bottom:10px;padding-top:40px">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:30px;color:#cc0000;font-size:20px">
+                                    Visitez notre boutique</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table><!--[if mso]></td></tr></table><![endif]-->
                     </td>
                   </tr>
                   <tr>
@@ -453,6 +486,28 @@ export const emailTemplate = () => {
                           <td align="center" valign="top" style="padding:0;Margin:0;width:598px">
                             <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
                               style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                              <tr>
+                                <td align="left" style="padding:5px;Margin:0">
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;color:#999999;font-size:20px">
+                                    Si vous rencontrez un problème avec compte client, merci de prendre contact avec <a
+                                      href="mailto:seesh@saturn.lu" target="_blank"
+                                      style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#d00802;font-size:20px">seesh@saturn.lu</a>
+                                  </p>
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;color:#999999;font-size:20px">
+                                    <br>
+                                  </p>
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;color:#999999;font-size:20px">
+                                    Meilleures salutations,<br>Mediamarkt-clone Luxembourg</p>
+                                  <p
+                                    style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:18px;color:#666666;font-size:12px">
+                                    <a href="mailto:seesh@saturn.lu" target="_blank"
+                                      style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#d00802;font-size:20px;word-break:break-all">seesh@saturn.lu</a>
+                                  </p>
+                                </td>
+                              </tr>
                               <tr>
                                 <td align="center"
                                   style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px;font-size:0">
@@ -515,39 +570,12 @@ export const emailTemplate = () => {
               </td>
             </tr>
           </table>
-          <table cellpadding="0" cellspacing="0" class="es-footer" align="center"
-            style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top">
-            <tr>
-              <td align="center" style="padding:0;Margin:0">
-                <table class="es-footer-body" align="center" cellpadding="0" cellspacing="0"
-                  style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:transparent;width:600px">
-                  <tr>
-                    <td align="left"
-                      style="Margin:0;padding-top:20px;padding-bottom:20px;padding-left:20px;padding-right:20px">
-                      <table cellpadding="0" cellspacing="0" width="100%"
-                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                        <tr>
-                          <td align="left" style="padding:0;Margin:0;width:560px">
-                            <table cellpadding="0" cellspacing="0" width="100%"
-                              style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr>
-                                <td align="center" style="padding:0;Margin:0;display:none"></td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
         </td>
       </tr>
     </table>
   </div>
 </body>
 
-</html>`
-}
+</html>
+`;
+};

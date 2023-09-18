@@ -12,6 +12,9 @@
     width: 100%;
 
     &__group {
+      margin-right: 10px;
+      margin-left: 10px;
+
       .title {
         font-size: 28.8px;
         text-align: center;
@@ -39,7 +42,7 @@
       align-items: center;
       margin-bottom: 30px;
 
-      a{
+      a {
         margin-top: 20px;
       }
     }

@@ -127,7 +127,7 @@ export const SignInValidation = ({
                   name="login_password"
                 />
                 <div className={styles.signin__submit}>
-                  <Link className={styles.btn_link} href="/recovery">
+                  <Link className={styles.btn_link} href="/forgot">
                     Mot de passe oublié ?
                   </Link>
                   <Button text="Se connecter" type="submit" />

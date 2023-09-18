@@ -1,4 +1,3 @@
-import { emailTemplate } from "@/EmailTemplate/template";
 import { google } from "googleapis";
 import nodemailer from "nodemailer";
 
@@ -18,7 +17,7 @@ const oAuth2Client = new OAuth2(
 );
 
 //send email
-export const sendEmail = (to: string) => {
+export const sendEmail = (to: string, url: string, subject: string, template: any) => {
   oAuth2Client.setCredentials({
     refresh_token: MAILING_SERVICE_REFRESH_TOKEN,
   });
@@ -40,8 +39,8 @@ export const sendEmail = (to: string) => {
   const mailOptions = {
     from: SENDER_EMAIL_ADRESS,
     to: to,
-    subject: "Confirmation du compte client",
-    html: emailTemplate(),
+    subject: subject,
+    html: template(to, url),
   };
 
   smtpTransport.sendMail(mailOptions, (err, infos) => {

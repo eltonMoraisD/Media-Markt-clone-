@@ -6,6 +6,7 @@ import db from '../../../../utils/db'
 import { validateEmail } from '@/utils/validation';
 import User from '@/models/User';
 import { sendEmail } from "../../../../utils/sendEmails"
+import { wellcomeTemplate } from "@/EmailTemplate/wellcome";
 
 interface IUser {
   firstName: string;
@@ -51,7 +52,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     await User.create(newUser)
 
     //send confirmation email 
-    sendEmail(email)
+    sendEmail(email, "", "Confirmation du compte client", wellcomeTemplate)
 
     await db.disconectDb();
 
