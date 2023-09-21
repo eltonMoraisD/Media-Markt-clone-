@@ -6,8 +6,6 @@ import { createResetToken } from "@/utils/token";
 import { validateEmail } from "@/utils/validation";
 import { resetPasswordTemplate } from "@/EmailTemplate/resetPassword"
 
-
-
 export async function POST(req: NextRequest) {
   try {
     await db.connectDb()
@@ -21,15 +19,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: "this email does not exists" }, { status: 400 })
     }
     const id: string = user._id.toString()
-    console.log("email not sent")
-    const user_id = createResetToken({
-      id,
-    } as unknown as string)
+    const user_id = await createResetToken({
+      id
+    })
 
     const url = `${process.env.BASE_URL}/reset/${user_id}`;
 
     sendEmail(email, url, "Réinitialiser le mot de passe du compte", resetPasswordTemplate)
-    console.log("email url sent", url)
     await db.disconectDb();
 
     return NextResponse.json({

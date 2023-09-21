@@ -48,6 +48,7 @@ export default function Forgot() {
         return;
       }
       setLoading(false);
+      setEmail(initialValues);
       toast.success(response.message);
     } catch (error: any) {
       throw new Error(error);
