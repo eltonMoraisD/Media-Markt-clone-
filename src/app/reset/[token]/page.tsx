@@ -1,11 +1,9 @@
 "use client";
-import React from "react";
 import styles from "./styles.module.scss";
 import { Form, Formik } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
-import { useParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 import Input from "@/components/Input";
 import Button from "@/components/Button";
@@ -14,8 +12,10 @@ import { resetPassword } from "@/helpers/resetPassword";
 const Reset: React.FC = () => {
   const [password, setPassword] = useState<string>("");
   const [conf_password, setConf_password] = useState<string>("");
+
   const params = useParams();
   const Router = useRouter();
+
   const { token } = params;
 
   const passwordValidation = Yup.object({

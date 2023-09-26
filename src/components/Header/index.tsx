@@ -20,7 +20,9 @@ interface IAppProps {}
 const Header: React.FunctionComponent<IAppProps> = () => {
   const [isOpen, setMenuOpen] = useState(false);
 
-  const handleMenuToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMenuToggle = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ): void => {
     event.stopPropagation();
     setMenuOpen(!isOpen);
   };

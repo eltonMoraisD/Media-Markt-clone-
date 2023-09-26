@@ -1,19 +1,24 @@
 .container {
-  max-width: 1120px;
+  max-width: 1136px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-
+  ;
   margin: 0 auto;
 
+  &__group {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
   &__baner {
-    // margin-left: 10px;
-    // margin-right: 10px;
+    
     margin-top: 18px;
     margin-bottom: 30px;
 
     img {
+     
       width: 100%;
       height: 100%;
       border-radius: 8px;

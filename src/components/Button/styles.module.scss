@@ -1,4 +1,9 @@
 .btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   background: $btn-secondary;
   color: $color-white;
   padding: 0 24px;
@@ -6,5 +11,20 @@
   border-radius: 4px;
   font-weight: 600;
   font-size: 1rem;
+
   cursor: pointer;
+  svg {
+    width: 30px;
+    height: 30px;
+    margin-right: 7px;
+
+  }
+  
+  &__icon {
+    border: 2px solid red;
+    position: absolute;
+    left: 0;
+    top: 50;
+    margin: 0;
+  }
 }

@@ -2,7 +2,7 @@ import { SignJWT, jwtVerify } from "jose";
 
 export const createResetToken = async (
   payload: { id: string },
-) => {
+): Promise<string> => {
   try {
     const secret = new TextEncoder().encode(process.env.RESET_TOKEN_SECRET);
     const alg = "HS256";
