@@ -1,0 +1,112 @@
+.progressbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  counter-reset: step;
+  margin: 1.5rem 0;
+  counter-reset: step;
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 100px;
+
+  //line before
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    height: 2px;
+    width: 30%;
+    background-color: $white-gray;
+
+    @media (max-width: 560px) {
+      width: 25%;
+    }
+    @media (max-width: 460px) {
+      width: 20%;
+    }
+    @media (max-width: 400px) {
+      width: 15%;
+    }
+  }
+
+  //line after
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    height: 2px;
+    width: 30%;
+    background-color: $white-gray;
+    z-index: -1;
+    @media (max-width: 560px) {
+      width: 25%;
+    }
+    @media (max-width: 460px) {
+      width: 20%;
+    }
+    @media (max-width: 400px) {
+      width: 15%;
+    }
+  }
+
+  &__step {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 2px solid $color-black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // circle
+    &::before {
+      counter-increment: step;
+      content: counter(step);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: $white-gray;
+      z-index: 900;
+    }
+
+    &:not(&_active) {
+      border: 2.5px solid $white-gray;
+    }
+
+    //bottom text
+    &::after {
+      content: attr(data-title);
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      top: calc(-100% + 5.1rem);
+      font-size: 0.85rem;
+      color: $color-black;
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+      color: $white-gray;
+    }
+
+    &_active::after {
+      color: $color-black;
+    }
+
+    &_active::before {
+      background-color: $color-black;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      color: $color-white;
+    }
+  }
+}

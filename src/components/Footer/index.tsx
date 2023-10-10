@@ -8,14 +8,16 @@ const Footer: React.FunctionComponent = (props) => {
       <div className={styles.footer__grid}>
         {footerData.map((text) => (
           <>
-            <div>
+            <div key={text.id}>
               <div className={styles.footer__conatiner}>
                 <p className={styles.footer__title}>{text.title}</p>
                 <ul>
                   <li>
                     {text.details.map((details) => (
                       <>
-                        <Link href="#">{details}</Link>
+                        <Link key={text.id} href="#">
+                          {details}
+                        </Link>
                       </>
                     ))}
                   </li>

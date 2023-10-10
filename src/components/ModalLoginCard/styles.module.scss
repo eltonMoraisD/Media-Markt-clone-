@@ -1,0 +1,58 @@
+.modal {
+  position: absolute;
+  right: 200px;
+  width: 315px;
+  border-radius: 10px;
+  top: 150px;
+  padding: 24px;
+  background-color: white;
+
+  &__buttons {
+    button {
+      margin-top: 1.3rem;
+      width: 100%;
+    }
+    :last-child {
+      button {
+        background: none;
+        border: 2px solid $color-black;
+        color: $color-black;
+      }
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1.8px;
+      background: $white-gray;
+      margin-top: 1.3rem;
+      margin-bottom: 1.3rem;
+      opacity: 0.3;
+
+    }
+
+
+
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    span {
+      font-weight: 400;
+      font-size: 1rem;
+    }
+
+    svg {
+      margin-right: 10px;
+      font-size: 1rem;
+    }
+  }
+}

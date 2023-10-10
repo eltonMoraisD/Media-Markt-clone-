@@ -7,6 +7,7 @@ import googleIcon from "../../assets/icons/google.png";
 import { StaticImageData } from "next/image";
 import { SignInValidation } from "@/components/Formik/SigninValidation";
 import { cookies } from "next/dist/client/components/headers";
+import HeadAuths from "@/components/HeadAuths";
 
 interface ISignInProps {
   providerId: string | undefined;
@@ -26,28 +27,30 @@ const SignIn: React.FunctionComponent<ISignInProps> = async () => {
   // const csrfToken2 = await getCsrfToken();
 
   return (
-    <div className={styles.group}>
-      <SignInValidation csrfToken={csrfToken}>
-        <div className={styles.signin}>
-          <div className={styles.signin__input}>
-            <div className={styles.login__socials}>
-              <span className={styles.or}>ou continuer</span>
-              <div className={styles.login__socials_wrap}>
-                {providers.map((provider) => (
-                  <div key={provider?.google.id}>
-                    <GoogleBtnProvider
-                      title={`Connectez-vous avec ${provider?.google.name}`}
-                      providerId={provider?.google.id}
-                      icon={googleIcon}
-                    ></GoogleBtnProvider>
-                  </div>
-                ))}
+    <>
+      <HeadAuths />
+      <div className={styles.all}>
+        <SignInValidation csrfToken={csrfToken} />
+        <div className={styles.login__socials}>
+          <div className={styles.login__socials_wrap}>
+            {providers.map((provider) => (
+              <div className={styles.btn} key={provider?.google.id}>
+                <GoogleBtnProvider
+                  title={` ${provider?.google.name}`}
+                  providerId={provider?.google.id}
+                  icon={googleIcon}
+                ></GoogleBtnProvider>
+                {/* <GoogleBtnProvider
+                title={`Connectez-vous avec ${provider?.google.name}`}
+                providerId={provider?.google.id}
+                icon={googleIcon}
+              ></GoogleBtnProvider> */}
               </div>
-            </div>
+            ))}
           </div>
         </div>
-      </SignInValidation>
-    </div>
+      </div>
+    </>
   );
 };
 

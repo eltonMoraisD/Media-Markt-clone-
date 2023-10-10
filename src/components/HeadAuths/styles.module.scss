@@ -1,0 +1,32 @@
+.header {
+  background: $header-color;
+  line-height: 1;
+  width: 100vw;
+  margin: 0 auto;
+
+  &__main {
+    max-width: 1472px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    .items {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        color: $color-white;
+        font-weight: 400;
+      }
+
+      svg {
+        fill: $color-white;
+        margin-right: 8px;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

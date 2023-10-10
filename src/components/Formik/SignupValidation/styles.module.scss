@@ -1,0 +1,59 @@
+.radio {
+  &__group {
+    position: relative;
+    display: flex;
+    gap: 16px 24px;
+  }
+
+}
+
+.signup {
+  width: 100%;
+  button {
+    width: 70%;
+    @media(max-width: 750px){
+      width: 100%;
+    }
+  }
+}
+
+.policy {
+  width: 70%;
+  margin-bottom: 20px;
+  color: $white-gray;
+  font-size: 14px;
+  text-align: left;
+  &__links {
+    margin-left: 2px;
+    font-weight: 600;
+    text-decoration: underline;
+    color: $color-black !important;
+  }
+}
+
+.error__message {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 8px;
+
+  &:before {
+    position: absolute;
+    content: "x";
+    text-align: center;
+    font-size: 10px;
+    color: $color-white;
+    font-weight: bold;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: $error-color-primary;
+  }
+
+  p {
+    font-size: 12px;
+    margin-left: 1.3rem;
+    color: #272422;
+  }
+}

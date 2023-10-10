@@ -1,16 +1,47 @@
-.input {
-  width: 100%;
-  outline: none;
-  padding: 10px 18px;
-  margin-top: 8px;
-  margin-bottom: 8px;
+.Active{
+  transform: translate(0, 12px) scale(0.75);
+}
 
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    position: absolute;
+    transform: translate(0, 26px) scale(1);
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 12px;
+    color: #999;
+    cursor: text;
+    pointer-events: none;
+    transform-origin: top left;
+    transition: all 0.2s ease-out;
+  }
+
+  &:focus  label,  .Active  {
+    transform: translate(0, 12px) scale(0.75);
+  }
+
+  &:focus-within  label  {
+    transform: translate(0, 12px) scale(0.75);
+  }
+  .input {
+    width: 100%;
+    outline: none;
+    padding: 16px;
+    border: 2px solid $white-gray;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+   
+  }
 }
 
 .error {
-  border: 1px solid $error-color-primary !important;
-  background-color: $error-color-secondary !important;
-
+  border: 2px solid $error-color-primary !important;
 }
 
 .error__message {
@@ -19,11 +50,12 @@
   align-items: center;
   text-align: center;
   margin-bottom: 8px;
+
   &:before {
     position: absolute;
-    content: "!";
+    content: "x";
     text-align: center;
-    font-size: 10px; //14
+    font-size: 10px;
     color: $color-white;
     font-weight: bold;
     width: 15px;

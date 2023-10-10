@@ -1,0 +1,49 @@
+.container {
+  margin-top: 50px;
+  background-color: $background-tertiary-color;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  &__newsletter {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    .subtitle {
+      font-size: 12px;
+      // text-align: justify;
+      margin-left: 35px;
+    }
+  }
+
+  &__title {
+    font-size: 22px;
+    letter-spacing: 0.2px;
+    margin-bottom: 10px;
+  }
+
+  
+
+  &__group {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100%;
+    input {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+
+      &:checked {
+        accent-color: $color-black;
+      }
+    }
+    p{
+      width: 24px;
+      height: 24px;
+    }
+    
+    
+  }
+
+  .items {}
+}

@@ -31,8 +31,8 @@ export default async function RootLayout({
       <body className={inter.className}>
         <SessionProviderCustom session={session}>
           <Providers>
-            <Top />
-            <Header />
+            {/* <Top /> */}
+            {/* <Header /> */}
             {children}
             <Footer />
           </Providers>

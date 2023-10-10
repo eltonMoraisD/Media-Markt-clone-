@@ -53,22 +53,16 @@ const Reset: React.FC = () => {
           >
             {(form) => (
               <Form method="post">
-                <label htmlFor="name">Mot de passe</label>
                 <Input
+                  label="Mot de passe"
                   name="password"
                   type="password"
-                  handleChange={(e: React.FormEvent<HTMLInputElement>) =>
-                    setPassword(e.currentTarget.value)
-                  }
-                />
-                <label htmlFor="name">Confirmer le mot de passe</label>
+                  handleChange={(e: React.FormEvent<HTMLInputElement>) => setPassword(e.currentTarget.value)} value={""}                />
                 <Input
+                  label="Confirmer le mot de passe"
                   name="conf_password"
                   type="password"
-                  handleChange={(e: React.FormEvent<HTMLInputElement>) =>
-                    setConf_password(e.currentTarget.value)
-                  }
-                />
+                  handleChange={(e: React.FormEvent<HTMLInputElement>) => setConf_password(e.currentTarget.value)} value={""}                />
                 <Button text="Réinitialiser le mot de passe" type="submit" />
               </Form>
             )}

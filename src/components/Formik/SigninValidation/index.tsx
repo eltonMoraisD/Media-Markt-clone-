@@ -1,18 +1,21 @@
 "use client";
-import styles from "../../../app/signin/styles.module.scss";
-import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
-import { Form, Formik } from "formik";
-import * as Yup from "yup";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import { Form, Formik } from "formik";
+import { useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
+import * as Yup from "yup";
+import styles from "./styles.module.scss";
 
-import Link from "next/link";
-import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import {
+  IoIosArrowForward
+} from "react-icons/io";
+
 import Loader from "@/components/Loader";
+import { signIn } from "next-auth/react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
-import AccountDetails from "@/components/AccountDetails";
 
 interface ISignInProps {
   login_email: string;
@@ -22,14 +25,8 @@ interface ISignInProps {
   login_error: string;
 }
 
-export const SignInValidation = ({
-  children,
-  csrfToken,
-}: {
-  children: React.ReactNode;
-  csrfToken: string;
-}) => {
-  const { data: session } = useSession();
+export const SignInValidation = ({ csrfToken }: { csrfToken: string }) => {
+  // const { data: session } = useSession();
 
   const initialValues: ISignInProps = {
     login_email: "",
@@ -40,7 +37,6 @@ export const SignInValidation = ({
   };
   const [user, setUser] = useState(initialValues);
   const [loading, setLoading] = useState(false);
-
   const { login_email, login_password } = user;
 
   const router = useRouter();
@@ -73,16 +69,16 @@ export const SignInValidation = ({
 
   const loginValidation = Yup.object({
     login_email: Yup.string()
-      .required("L'adresse électronique est requise")
-      .email("Veuillez saisir une adresse e-mail valide"),
-    login_password: Yup.string().required("Le mot de passe est nécessaire"),
+      .required("Por favor, añade un correo electrónico válido.")
+      .email("Formato de correo electrónico inválido"),
+    login_password: Yup.string().required(
+      "Por favor, introduce una contraseña."
+    ),
   });
 
   return (
     <>
-      {session ? (
-        <AccountDetails />
-      ) : (
+     
         <div className={styles.container}>
           <Formik
             enableReinitialize={true}
@@ -95,52 +91,52 @@ export const SignInValidation = ({
           >
             {(form) => (
               <Form method="post" action="/api/auth/signin/email">
-                <h1 className={styles.title}>Connexion</h1>
-                {!form.isValid && (
-                  <div className={styles.error__popup}>
-                    <span>
-                      Merci de bien vouloir ajuster les éléments suivants :
-                    </span>
-                    <ul>
-                      <li>E-mail ou mot de passe incorrect.</li>
-                    </ul>
-                  </div>
-                )}
-                <input
-                  name="csrfToken"
-                  type="hidden"
-                  defaultValue={csrfToken}
-                />
-                <label htmlFor="name" className={styles.label}>
-                  E-mail
-                </label>
-                <Input
-                  handleChange={handleChange}
-                  type="email"
-                  name="login_email"
-                />
+                <div className={styles.wrapper}>
+                  <h1 className={styles.title}>¿Ya estás registrado?</h1>
+                  <p className={styles.subtitle}>
+                    Inicia sesión ahora para aprovecharte de todos los
+                    beneficios de la cuenta de cliente de MediaMarkt. ¿Nuevo
+                    cliente?
+                    <Link href="/signup">Al registro</Link>
+                  </p>
 
-                <label className={styles.label}>Mot de passe</label>
-                <Input
-                  handleChange={handleChange}
-                  type="password"
-                  name="login_password"
-                />
-                <div className={styles.signin__submit}>
-                  <Link className={styles.btn_link} href="/forgot">
-                    Mot de passe oublié ?
-                  </Link>
-                  <Button text="Se connecter" type="submit" />
-                  <Link href="/signup">Creer un compte</Link>
+                  <input
+                    name="csrfToken"
+                    type="hidden"
+                    defaultValue={csrfToken}
+                  />
+
+                  <Input
+                    value={login_email}
+                    handleChange={handleChange}
+                    type="email"
+                    name="login_email"
+                    label="Correo eletrónico"
+                  />
+
+                  <Input
+                    value={login_password}
+                    handleChange={handleChange}
+                    type="password"
+                    name="login_password"
+                    label="Contraseña"
+                  />
+                  <div className={styles.signin__submit}>
+                    <Link className={styles.btn_link} href="/forgot">
+                      <IoIosArrowForward />
+                      ¿Olvidaste tu contraseña?
+                    </Link>
+                    <Button text="Iniciar sesión" type="submit" />
+                  </div>
                 </div>
               </Form>
             )}
           </Formik>
-          {children}
+
           <ToastContainer />
           {loading && <Loader loading={loading} />}
         </div>
-      )}
+      
     </>
   );
 };

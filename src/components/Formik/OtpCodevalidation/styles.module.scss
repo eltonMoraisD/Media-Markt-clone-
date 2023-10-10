@@ -1,0 +1,92 @@
+.wrapper {
+  display: flex;
+  position: relative;
+
+  &__inputStyle {
+    width: 48px !important;
+    height: 54px;
+    margin-right: 10px;
+    border-radius: 8px;
+    background: $background-tertiary-color;
+    border: 2px solid transparent;
+
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
+  }
+
+}
+
+.submit {
+  display: flex;
+  width: 60%;
+
+  button {
+    margin-top: 50px;
+    flex: 1;
+    width: 100%;
+  }
+}
+
+.title {
+  font-size: 19.8px;
+  margin-bottom: 20px;
+
+  &__link {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.error__sub1 {
+  color: $error-color-primary;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.error__sub2 {
+  color: $color-black;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.newCode {
+  text-decoration: underline;
+}
+
+.error__message {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 8px;
+  top: -15px;
+
+  &:before {
+    position: absolute;
+    content: "x";
+    text-align: center;
+    font-size: 10px;
+    color: $color-white;
+    font-weight: bold;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: $error-color-primary;
+  }
+
+  span {
+    font-size: 14px;
+    margin-left: 1.3rem;
+    color: #272422;
+  }
+
+}

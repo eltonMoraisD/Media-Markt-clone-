@@ -1,10 +1,14 @@
 import Baner from "@/components/Baner";
 import CaroselProduct from "@/components/CaroselProduct";
+import Header from "@/components/Header";
 import ProductCategories from "@/components/ProductCategories/ProductCategories";
+import Top from "@/components/Top";
 
 export default function Home() {
   return (
     <main>
+      <Header />
+      <Top />
       <Baner
         source={
           "https://mediamarkt.lu/cdn/shop/files/BANNER_LASTCHANCE_HOME_1296x.jpg?v=1694790891"

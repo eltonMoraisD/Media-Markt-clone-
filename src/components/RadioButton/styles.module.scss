@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  margin-top: 20px;
+
+  .input {
+    width: 24px;
+    height: 24px;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .input[type='radio'] {
+    accent-color: $color-black;
+  }
+
+  .label {
+    margin-left: 5px;
+    font-size: 1rem;
+    // margin-right: 10px;
+  }
+}
