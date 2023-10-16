@@ -18,22 +18,22 @@ const RadioButton: React.FC<IInputProps> = (
   const [_, meta] = useField({ name });
   return (
     <div className={styles.container}>
-    
 
-        <Field
-          onChange={handleChange}
-          className={styles.input}
-          checked={checked === value}
-          id={id}
-          value={value}
-          name={name}
-          type={type}
-          {...props}
-        />
-        <label className={styles.label} htmlFor={type}>
-          {label}
-        </label>
-    
+
+      <Field
+        onChange={handleChange}
+        className={styles.input}
+        checked={checked}
+        id={id}
+        value={value}
+        name={name}
+        type={type}
+        {...props}
+      />
+      <label className={styles.label} htmlFor={type}>
+        {label}
+      </label>
+
       {/* {meta.touched && meta.error && (
         <div className={styles.error__message}>
           <span>{meta.error}</span>

@@ -1,45 +1,65 @@
 "use client";
+import styles from "./styles.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import OTPInput, { AllowedInputTypes } from "react-otp-input";
+import OTPInput from "react-otp-input";
+import { Hotp } from "time2fa";
 
 import Button from "@/components/Button";
-import styles from "./styles.module.scss";
 
 import { Form, Formik } from "formik";
 import {
   memo,
   useState,
-  useCallback,
-  InputHTMLAttributes,
-  ReactNode,
 } from "react";
-import * as Yup from "yup";
-import { formStage } from "../../../redux/stageSlice";
+import { formStage } from "../../../redux/reducers/stageSlice";
 
-import Loader from "@/components/Loader";
 import { useRouter } from "next/navigation";
 
-interface IOtpProps {}
+interface IOtpProps { }
 
 export const OtpCodeValidation = (props: IOtpProps): JSX.Element => {
   // const { data: session } = useSession();
   const userEmail = useSelector(({ stepsReducer }) => stepsReducer.FormEmail);
+  const secret = useSelector(({ stepsReducer }) => stepsReducer.Secret)
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [OTP, setOTP] = useState("");
-
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
   const dispach = useDispatch();
 
-  const sendCode = async () => {
-    console.log("sendcode called");
+  const handlePaste: React.ClipboardEventHandler = (event) => {
+    const data = event.clipboardData.getData('text').trim();
+    const pasted = Array.from(data).filter(v => v !== "\n").join("")
+    setOTP(pasted)
+  };
+
+  const isOtpMatched = async () => {
+    setLoading(true)
     if (OTP.length < 6) {
+      setErrorMessage("Por favor, introduce los 6 dígitos")
       setError(true);
+      setLoading(false)
     } else {
       setError(false);
+      setErrorMessage("")
     }
-    dispach(formStage(3)); //update the steps
+
+    const valid = Hotp.validate({
+      passcode: OTP.toString(),
+      secret: secret,
+      counter: 1,
+    });
+    if (valid) {
+      dispach(formStage(3)); //update the steps
+      setErrorMessage("")
+      setLoading(false)
+    } else {
+      setError(true);
+      setErrorMessage("El código no es válido. Compruébalo y vuelve a intentarlo o solicita un nuevo código con el siguiente enlace.")
+      setLoading(false)
+    }
   };
 
   const handleChange = (OTP: string) => {
@@ -54,7 +74,7 @@ export const OtpCodeValidation = (props: IOtpProps): JSX.Element => {
           enableReinitialize={true}
           initialValues={{}}
           // validationSchema={otpValidationSchema}
-          onSubmit={sendCode}
+          onSubmit={isOtpMatched}
         >
           {(form) => (
             <Form>
@@ -74,31 +94,33 @@ export const OtpCodeValidation = (props: IOtpProps): JSX.Element => {
               </p>
 
               <div className={styles.wrapper}>
-                <OTPInput
-                  onChange={handleChange}
-                  value={OTP}
-                  inputType="number"
-                  inputStyle={styles.wrapper__inputStyle}
-                  numInputs={6}
-                  renderSeparator={<span></span>}
-                  renderInput={(props) => <input  {...props} />}
-                />
+                <div>
+                  <OTPInput
+                    onChange={handleChange}
+                    value={OTP}
+                    inputType="number"
+                    inputStyle={styles.wrapper__inputStyle}
+                    numInputs={6}
+                    onPaste={handlePaste}
+                    renderInput={(props) => <input  {...props} />}
+                  />
+
+                </div>
               </div>
 
               {error ? (
                 <div className={styles.error__message}>
-                  <span>Por favor, introduce los 6 dígitos</span>
+                  <span>{errorMessage}</span>
                 </div>
               ) : null}
-              <span className={styles.newCode} onClick={()=> console.log("span can be clicked")}>Enviar nuevo código</span>
+              <span className={styles.newCode} onClick={() => console.log("span can be clicked")}>Enviar nuevo código</span>
               <div className={styles.submit}>
-                <Button text="Enviar" type="submit" />
+                <Button loading={loading} text="Enviar" type="submit" />
               </div>
             </Form>
           )}
         </Formik>
 
-        {loading && <Loader loading={loading} />}
       </div>
     </>
   );

@@ -5,12 +5,12 @@ import customStorage from './customStorage'
 
 import thunk from "redux-thunk";
 
-// import { cartReducer as cart } from "./cartSlice"
-import {stepsReducer} from "./stageSlice"
+import {stepsReducer} from "./reducers/stageSlice"
+import {forgotReducer} from "./reducers/forgotSlice"
 
 const reducers = combineReducers({
-  // cart,
-  stepsReducer
+  stepsReducer,
+  forgotReducer
 });
 
 const config = {

@@ -1,17 +1,36 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
+  role: {
+    type: String,
+    default: "client",
+  },
+  gender: {
+    type: String,
+    required: true
+  },
   firstName: {
     type: String,
-    required: "Please enter your first name",
+    required: true,
   },
   lastName: {
     type: String,
-    required: "Please enter your last name",
+    required: true,
+  },
+  nif: {
+    type: String,
+    // required: true
+  },
+  cif: {
+    type: String,
+
+  },
+  companyName:{
+    type: String
   },
   password: {
     type: String,
-    required: '"Please enter a password.',
+    required: true,
   },
   email: {
     type: String,
@@ -19,10 +38,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
     unique: true,
   },
-  role: {
-    type: String,
-    default: "user",
-  },
+ 
 
   address: [
     {

@@ -1,28 +1,31 @@
 "use client";
 import styles from "./styles.module.scss";
+
 import Link from "next/link";
 import Image from "next/image";
-
 import { GiHamburgerMenu } from "react-icons/gi";
-
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import { MdExpandLess } from "react-icons/md";
-
 import { FaUser } from "react-icons/fa";
-import logo from "../../assets/logo.png";
-
 import { useEffect, useState } from "react";
+
+import logo from "../../assets/logo.png";
 import SideMenu from "../SideMenu";
 import Blur from "../Blur";
 import SideSearch from "../SideSearch";
 import Search from "../Search";
 import ModalLoginCard from "../ModalLoginCard";
-import Top from "../Top";
+import { useSession } from "next-auth/react";
+import { useSelector } from "react-redux";
 
 const Header: React.FunctionComponent = () => {
-  const [isOpen, setMenuOpen] = useState(false);
-  const [isSideSearchOpen, setSideSearchOpen] = useState(false);
-  const [isAuthCardModalOpen, setAuthCardModal] = useState(false);
+  const [isOpen, setMenuOpen] = useState<boolean>(false);
+  const [isSideSearchOpen, setSideSearchOpen] = useState<boolean>(false);
+  const [isAuthCardModalOpen, setAuthCardModal] = useState<boolean>(false);
+  const session = useSession()
+  const firstName = useSelector(({ stepsReducer }) => stepsReducer.FormFirstName)
+  const lastName = useSelector(({ stepsReducer }) => stepsReducer.FormLastName)
+
 
   useEffect(() => {
     //prevent body scroll
@@ -50,6 +53,14 @@ const Header: React.FunctionComponent = () => {
     setAuthCardModal(!isAuthCardModalOpen);
   };
 
+  const firstAndSecondLetter = (): string => {
+    const first = firstName.split(" ")
+    const last = lastName.split(" ")
+    const firstLetter = Array.from(first).map((word: any) => word.charAt(0))
+    const secondLetter = Array.from(last).map((word: any) => word.charAt(0))
+
+    return firstLetter.join(" ").toUpperCase().concat(secondLetter.join(" ").toUpperCase())
+  }
   return (
     <>
       <header className={styles.header}>
@@ -81,8 +92,8 @@ const Header: React.FunctionComponent = () => {
             />
           </Link>
           <button
-            onClick={(e) => handleMenuToggle(e)}
             className={styles.header__menu}
+            onClick={(e) => handleMenuToggle(e)}
           >
             <GiHamburgerMenu /> <span>Todas las categorías</span>
           </button>
@@ -100,14 +111,22 @@ const Header: React.FunctionComponent = () => {
               <MdExpandLess />
             </span>
           </div>
-
+          {/* icons */}
           <div className={styles.header__wrapper}>
             <div
               onClick={(e) => handleAuthCardModal(e)}
               className={styles.userIcon}
             >
               <span className={styles.header__wrapper__icons}>
-                <FaUser />
+                {
+                  session.status === "unauthenticated" ?
+                    <FaUser />
+                    :
+                    <span>
+                      {firstAndSecondLetter()}
+                    </span>
+                }
+
               </span>
             </div>
             <Link href="#">
@@ -120,8 +139,6 @@ const Header: React.FunctionComponent = () => {
             </Link>
           </div>
         </div>
-        {/* here*/}
-        {/* <Top /> */}
       </header>
       {isOpen && (
         <>
@@ -139,6 +156,7 @@ const Header: React.FunctionComponent = () => {
 
       {isAuthCardModalOpen && (
         <ModalLoginCard
+
           isAuthCardModalOpen={isAuthCardModalOpen}
           handleAuthCardModal={handleAuthCardModal}
         />

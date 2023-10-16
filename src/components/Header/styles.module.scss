@@ -7,13 +7,15 @@
     display: flex;
     max-width: 1472px;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
-    padding: 12px 0;
+    padding: 12px;
     gap: 1rem;
     font-weight: 600;
     overflow: hidden;
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1023px) {
       display: none;
     }
 
@@ -46,29 +48,25 @@
       display: flex;
       flex-direction: column;
       justify-content: left;
-
       padding: 10px;
 
     }
 
     &__logo {
-      // width: 200px;
-      // height: auto;
-      margin-right: 1rem;
-      object-fit: contain;
-
-      @media (max-width: 1000px) {
-        margin-right: 12px;
+      margin-left: 3rem;
+      position: relative;
+      @media(max-width:1000px){
+        left: 50px;
       }
-
-      //Bug with image responsive
+      
+      // Bug with image responsive - fix it later
       @media (max-width: 750px) {
-        display: flex;
-        text-align: left;
-        // width: max-content;
-        width: 150px;
-        left: 0;
+        top: -20px;
+        left: -200px;
+        // margin-left: 200px;
+
       }
+     
     }
 
     .rigth {
@@ -78,7 +76,9 @@
       justify-content: center;
       cursor: pointer;
       padding-right: 2rem;
-
+      @media(max-width:1009px ){
+        display: none;
+      }
       &__container {
         h3 {
           color: $color-white;
@@ -139,6 +139,7 @@
       border: none;
       margin: 0;
       left: -8px;
+      margin-right: 10px;;
       // top: 35px;
     }
 
@@ -227,4 +228,5 @@
   height: 100vh;
   // right: 205px;
   top: 0;
+
 }

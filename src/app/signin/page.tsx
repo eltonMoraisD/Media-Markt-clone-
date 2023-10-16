@@ -40,11 +40,6 @@ const SignIn: React.FunctionComponent<ISignInProps> = async () => {
                   providerId={provider?.google.id}
                   icon={googleIcon}
                 ></GoogleBtnProvider>
-                {/* <GoogleBtnProvider
-                title={`Connectez-vous avec ${provider?.google.name}`}
-                providerId={provider?.google.id}
-                icon={googleIcon}
-              ></GoogleBtnProvider> */}
               </div>
             ))}
           </div>

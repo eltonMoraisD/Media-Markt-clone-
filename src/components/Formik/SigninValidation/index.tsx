@@ -11,7 +11,6 @@ import {
   IoIosArrowForward
 } from "react-icons/io";
 
-import Loader from "@/components/Loader";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -78,65 +77,65 @@ export const SignInValidation = ({ csrfToken }: { csrfToken: string }) => {
 
   return (
     <>
-     
-        <div className={styles.container}>
-          <Formik
-            enableReinitialize={true}
-            initialValues={{
-              login_email,
-              login_password,
-            }}
-            validationSchema={loginValidation}
-            onSubmit={signInHandler}
-          >
-            {(form) => (
-              <Form method="post" action="/api/auth/signin/email">
-                <div className={styles.wrapper}>
-                  <h1 className={styles.title}>¿Ya estás registrado?</h1>
-                  <p className={styles.subtitle}>
-                    Inicia sesión ahora para aprovecharte de todos los
-                    beneficios de la cuenta de cliente de MediaMarkt. ¿Nuevo
-                    cliente?
-                    <Link href="/signup">Al registro</Link>
-                  </p>
 
-                  <input
-                    name="csrfToken"
-                    type="hidden"
-                    defaultValue={csrfToken}
-                  />
+      <div className={styles.container}>
+        <Formik
+          enableReinitialize={true}
+          initialValues={{
+            login_email,
+            login_password,
+          }}
+          validationSchema={loginValidation}
+          onSubmit={signInHandler}
+        >
+          {(form) => (
+            <Form method="post" action="/api/auth/signin/email">
+              <div className={styles.wrapper}>
+                <h1 className={styles.title}>¿Ya estás registrado?</h1>
+                <p className={styles.subtitle}>
+                  Inicia sesión ahora para aprovecharte de todos los
+                  beneficios de la cuenta de cliente de MediaMarkt. ¿Nuevo
+                  cliente?
+                  <Link href="/signup">Al registro</Link>
+                </p>
 
-                  <Input
-                    value={login_email}
-                    handleChange={handleChange}
-                    type="email"
-                    name="login_email"
-                    label="Correo eletrónico"
-                  />
+                <input
+                  name="csrfToken"
+                  type="hidden"
+                  defaultValue={csrfToken}
+                />
 
-                  <Input
-                    value={login_password}
-                    handleChange={handleChange}
-                    type="password"
-                    name="login_password"
-                    label="Contraseña"
-                  />
-                  <div className={styles.signin__submit}>
-                    <Link className={styles.btn_link} href="/forgot">
-                      <IoIosArrowForward />
-                      ¿Olvidaste tu contraseña?
-                    </Link>
-                    <Button text="Iniciar sesión" type="submit" />
-                  </div>
+                <Input
+                  value={login_email}
+                  handleChange={handleChange}
+                  type="email"
+                  name="login_email"
+                  label="Correo eletrónico"
+                />
+
+                <Input
+                  value={login_password}
+                  handleChange={handleChange}
+                  type="password"
+                  name="login_password"
+                  label="Contraseña"
+                />
+                <div className={styles.signin__submit}>
+                  <Link className={styles.btn_link} href="/forgot">
+                    <IoIosArrowForward />
+                    ¿Olvidaste tu contraseña?
+                  </Link>
+                  <Button loading={loading} text="Iniciar sesión" type="submit" />
                 </div>
-              </Form>
-            )}
-          </Formik>
+              </div>
+            </Form>
+          )}
+        </Formik>
 
-          <ToastContainer />
-          {loading && <Loader loading={loading} />}
-        </div>
-      
+        <ToastContainer />
+
+      </div>
+
     </>
   );
 };

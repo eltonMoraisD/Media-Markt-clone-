@@ -1,6 +1,6 @@
 import { google } from "googleapis";
 import nodemailer from "nodemailer";
-
+import { render } from '@react-email/render';
 const { OAuth2 } = google.auth;
 
 const {
@@ -17,13 +17,13 @@ const oAuth2Client = new OAuth2(
 );
 
 //send email
-export const sendEmail = (to: string, url: string, subject: string, template: any) => {
+export const sendEmail = (to: string, url: string, subject: string, template: any,otpCode?:number,) => {
   oAuth2Client.setCredentials({
     refresh_token: MAILING_SERVICE_REFRESH_TOKEN,
   });
 
   const accessToken = oAuth2Client.getAccessToken()
-
+  const emailHtml = render(template({ otpCode:otpCode,url: url }));
   const smtpTransport = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -40,7 +40,7 @@ export const sendEmail = (to: string, url: string, subject: string, template: an
     from: SENDER_EMAIL_ADRESS,
     to: to,
     subject: subject,
-    html: template(to, url),
+    html: emailHtml,
   };
 
   smtpTransport.sendMail(mailOptions, (err, infos) => {

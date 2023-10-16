@@ -1,0 +1,37 @@
+.mailbox {
+  &__title {
+    margin-bottom: 1.5rem;
+  }
+
+  &__sub {
+    font-size: 1.2rem !important;
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  &__warning {
+    span {
+      font-weight: 700;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    a {
+      font-weight: 700;
+      border-bottom: 2px solid $color-black;
+      font-size: 1rem;
+    }
+
+    svg {
+      color: $color-red;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

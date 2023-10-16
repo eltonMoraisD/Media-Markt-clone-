@@ -2,10 +2,9 @@ import type { NextResponse, NextRequest } from 'next/server'  // import the type
 import { NextResponse as Response } from 'next/server'
 import bcrypt from "bcrypt"
 
-import db from '../../../../utils/db'
-import { validateEmail } from '@/utils/validation';
+import db from '../../../../../utils/db'
 import User from '@/models/User';
-import { sendEmail } from "../../../../utils/sendEmails"
+import { sendEmail } from "../../../../../utils/sendEmails"
 import { wellcomeTemplate } from "@/EmailTemplate/wellcome";
 
 interface IUser {
@@ -13,25 +12,23 @@ interface IUser {
   lastName: string;
   email: string;
   password: string;
-
+  gender: string;
+  nif: string;
+  role: string
 }
 
-//Create user 
+//Create user whit role client
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     await db.connectDb()
-    const { firstName, lastName, email, password }: IUser = await request.json()
+    const { gender, firstName, lastName, email, nif, password,role }: IUser = await request.json()
 
-    if (!firstName || !lastName || !email || !password) {
+    if (!firstName|| !gender || !nif ||  !lastName || !email || !password) {
       return Response.json({
         message: "Please fill all fields"
       }, {
         status: 400
       })
-    }
-
-    if (!validateEmail(email)) {
-      return Response.json({ message: "Invalid e-mail" }, { status: 400 })
     }
 
     const user = await User.findOne({ email })
@@ -47,12 +44,10 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     const cryptedPassword = await bcrypt.hash(password, 10)
 
-    const newUser = new User({ firstName, lastName, email, password: cryptedPassword })
+    const newUser = new User({gender,nif, firstName, lastName, email, password: cryptedPassword,role })
 
     await User.create(newUser)
 
-    //send confirmation email 
-    sendEmail(email, "", "Confirmation du compte client", wellcomeTemplate)
 
     await db.disconectDb();
 

@@ -3,7 +3,10 @@ const path = require("path");
 
 const nextConfig = {
   reactStrictMode: true,
-
+  productionBrowserSourceMaps: false, // Disable source maps in development
+  optimizeFonts: false, // Disable font optimization
+  minify: false,
+  swcMinify: true,
   swcMinify: true,
   images: {
     unoptimized: true,

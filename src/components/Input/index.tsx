@@ -22,9 +22,8 @@ const Input: React.FunctionComponent<IInputProps> = (
       </label>
       <Field
         onChange={handleChange}
-        className={`${styles.input} ${
-          meta.touched && meta.error ? styles.error : ""
-        }`}
+        className={`${styles.input} ${meta.touched && meta.error ? styles.error : ""
+          }`}
         value={value}
         name={name}
         type={type}

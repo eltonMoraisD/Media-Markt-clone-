@@ -1,16 +1,18 @@
 "use client";
-import Button from "@/components/Button";
 import styles from "./styles.module.scss";
-import Input from "@/components/Input";
 import { Form, Formik } from "formik";
 import { useState } from "react";
-import * as Yup from "yup";
-import {formStage,formEmail} from "../../../redux/stageSlice"
-
-import Loader from "@/components/Loader";
 import { useRouter } from "next/navigation";
+import { Hotp, generateConfig, generateSecret } from "time2fa";
+import * as Yup from "yup";
 import Link from "next/link";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { sendOtpCode } from "@/helpers/sendOtpCode";
+
+import Button from "@/components/Button";
+import Input from "@/components/Input";
+import { formStage, formEmail, secret as secretAction } from "../../../redux/reducers/stageSlice"
+
 
 interface ISignInProps {
   login_email: string;
@@ -23,7 +25,6 @@ export const FirstStepAuthValidation = () => {
 
   const initialValues: ISignInProps = {
     login_email: "",
-
     value: "",
     name: "",
 
@@ -31,12 +32,10 @@ export const FirstStepAuthValidation = () => {
   const [user, setUser] = useState(initialValues);
   const [loading, setLoading] = useState(false);
   const { login_email } = user;
-
-
   const router = useRouter();
   const dispach = useDispatch()
 
-  
+
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { name, value } = e.currentTarget;
@@ -44,17 +43,21 @@ export const FirstStepAuthValidation = () => {
   };
 
   const sendCode = async () => {
-    dispach(formStage(2))//update the steps
-    dispach(formEmail(login_email))
-    
+    const config = generateConfig();
+    const secret = generateSecret();
+    const code = Hotp.generatePasscode({ secret, counter: 1 }, config);
 
-    // if (res?.error) {
-    //   setLoading(false);
-    //   setUser({ ...user, login_error: res?.error });
-    //   toast.error(res?.error);
-    // } else {
-    //   return router.push("/");
-    // }
+    setLoading(true)
+
+    const response = await sendOtpCode(code, login_email)
+
+    if (response.ok && response.status === 200) {
+      setLoading(false)
+      dispach(formStage(2))//update the steps
+      dispach(formEmail(login_email,))
+      dispach(secretAction(secret))
+    }
+
   };
 
   const loginValidation = Yup.object({
@@ -91,14 +94,14 @@ export const FirstStepAuthValidation = () => {
                   label="Correo eletrónico"
                 />
                 <div className={styles.wrapper__submit}>
-                  <Button text="Enviar código" type="submit" />
+                  <Button loading={loading} text="Enviar código" type="submit" />
                 </div>
               </div>
             </Form>
           )}
         </Formik>
 
-        {loading && <Loader loading={loading} />}
+
       </div>
 
     </>

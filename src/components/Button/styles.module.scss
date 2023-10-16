@@ -11,15 +11,21 @@
   border-radius: 8px;
   font-weight: 600;
   font-size: 1.2rem;
-
   cursor: pointer;
+
+ 
+
+  &:hover {
+    background: #616161;
+    transition: 0.2s;
+  }
   svg {
     width: 30px;
     height: 30px;
     margin-right: 7px;
 
   }
-  
+
   &__icon {
     border: 2px solid red;
     position: absolute;
@@ -27,4 +33,15 @@
     top: 50;
     margin: 0;
   }
+}
+
+
+.loader {
+  height: 20px !important;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: all !important;
 }

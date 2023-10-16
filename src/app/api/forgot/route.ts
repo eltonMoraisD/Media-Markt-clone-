@@ -4,7 +4,7 @@ import db from "@/utils/db";
 import { sendEmail } from "@/utils/sendEmails";
 import { createResetToken } from "@/utils/token";
 import { validateEmail } from "@/utils/validation";
-import { resetPasswordTemplate } from "@/EmailTemplate/resetPassword"
+import resetPasswordTemplate  from "../../../../emails/resetPassword"
 
 export async function POST(req: NextRequest) {
   try {
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
 
     const url = `${process.env.BASE_URL}/reset/${user_id}`;
 
-    sendEmail(email, url, "Réinitialiser le mot de passe du compte", resetPasswordTemplate)
+    sendEmail(email, url, "Restablecer contraseña", resetPasswordTemplate)
     await db.disconectDb();
 
     return NextResponse.json({

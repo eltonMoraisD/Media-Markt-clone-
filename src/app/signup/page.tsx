@@ -9,12 +9,19 @@ import { useSelector } from "react-redux";
 import { OtpCodeValidation } from "@/components/Formik/OtpCodevalidation";
 
 const SignUp = () => {
-  const [isActive, setActive] = useState(true);
-  const pageStage = useSelector(({stepsReducer}) => stepsReducer.FormStage)
+  const [isActive, setActive] = useState<boolean>(true);
+  const [role, setRole] = useState<string>("client")
+  const pageStage = useSelector(({ stepsReducer }) => stepsReducer.FormStage)
   // let pageStage = 2;
 
-  const handleActiveBtn = () => {
-    setActive(!isActive);
+  const handleActiveBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const { name } = e.currentTarget
+    setRole(name)
+    if (name === "client") {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
   };
   return (
     <>
@@ -32,6 +39,7 @@ const SignUp = () => {
             <>
               <div className={styles.rules}>
                 <button
+                  name="client"
                   onClick={handleActiveBtn}
                   className={
                     isActive
@@ -43,16 +51,17 @@ const SignUp = () => {
                 </button>
                 <button
                   onClick={handleActiveBtn}
+                  name="company"
                   className={
-                    !isActive
-                      ? `${styles.rules__right} ${styles.active}`
-                      : `${styles.rules__right}`
+                    isActive
+                      ? `${styles.rules__right}`
+                      : `${styles.rules__right}  ${styles.active}`
                   }
                 >
                   Cliente de empresas
                 </button>
               </div>
-              <SignUpValidation />
+              <SignUpValidation role={role} />
             </>
           )}
         </div>

@@ -3,15 +3,25 @@
   right: 200px;
   width: 315px;
   border-radius: 10px;
-  top: 150px;
+  top: 160px;
   padding: 24px;
   background-color: white;
+
+  .logout {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+    cursor: pointer;
+  }
 
   &__buttons {
     button {
       margin-top: 1.3rem;
       width: 100%;
+      height: 48px;
     }
+
     :last-child {
       button {
         background: none;
@@ -20,31 +30,34 @@
       }
     }
 
-    &::after {
-      content: "";
-      display: block;
-      width: 100%;
-      height: 1.8px;
-      background: $white-gray;
-      margin-top: 1.3rem;
-      margin-bottom: 1.3rem;
-      opacity: 0.3;
 
+  }
+
+  .user {
+    border-radius: 10px 10px 0 0 !important;
+    z-index: 1;
+    padding: 24px;
+    margin: -24px -24px 0px;
+    background-color: $background-tertiary-color;
+    margin-bottom: 10px;
+
+    &__name {
+      color: $text-gray;
+      font-weight: 600;
     }
-
-
-
   }
 }
 
 .links {
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
 
   a {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
+
     span {
       font-weight: 400;
       font-size: 1rem;
@@ -54,5 +67,16 @@
       margin-right: 10px;
       font-size: 1rem;
     }
+
+
   }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    border-top: 3px solid $background-tertiary-color;
+    width: 100%;
+    transform: translateY(-.50rem);
+  }
+  
 }
