@@ -13,14 +13,11 @@ import {
 } from '@react-email/components';
 import * as React from 'react';
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : '';
 
-export const StripeWelcomeEmail = ({ to, url }: { to: string, url: string }) => (
+
+export const resetPassword = ({ to, url }: { to: string, url: string }) => (
   <Html>
     <Head />
-    <Preview>You're now ready to make live transactions with Stripe!</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={box}>
@@ -73,7 +70,7 @@ export const StripeWelcomeEmail = ({ to, url }: { to: string, url: string }) => 
   </Html >
 );
 
-export default StripeWelcomeEmail;
+export default resetPassword;
 
 const main = {
   backgroundColor: '#f6f9fc',

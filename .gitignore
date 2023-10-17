@@ -6,7 +6,10 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/.react-email/*
+/.react-email
+/react-email
+/log
 # testing
 /coverage
 
