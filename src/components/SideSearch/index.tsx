@@ -1,19 +1,9 @@
 import styles from "./styles.module.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MdClose } from "react-icons/md";
-
-import { SlLocationPin } from "react-icons/sl";
-import { AiOutlineClockCircle } from "react-icons/ai";
-import { TbTruckDelivery } from "react-icons/tb";
-import {
-  IoIosArrowDown,
-  IoIosArrowUp,
-  IoIosArrowForward,
-} from "react-icons/io";
 
 import Button from "../Button";
 import Search from "../Search";
-import Link from "next/link";
 import CardLocation from "./CardLocation";
 
 interface ISideSearch {

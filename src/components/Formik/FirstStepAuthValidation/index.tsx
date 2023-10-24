@@ -100,8 +100,6 @@ export const FirstStepAuthValidation = () => {
             </Form>
           )}
         </Formik>
-
-
       </div>
 
     </>

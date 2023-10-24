@@ -83,7 +83,7 @@ const Header: React.FunctionComponent = () => {
         <div className={styles.header__main}>
           <Link href="/">
             <Image
-              width={200}
+              width={180}
               height={100}
               priority={true}
               className={styles.header__main__logo}
@@ -97,6 +97,7 @@ const Header: React.FunctionComponent = () => {
           >
             <GiHamburgerMenu /> <span>Todas las categorías</span>
           </button>
+
           <Search />
 
           <div

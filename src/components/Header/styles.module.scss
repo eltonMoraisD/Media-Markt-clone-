@@ -1,15 +1,17 @@
 .header {
   background: $header-color;
   line-height: 1;
-  margin: 0 auto;
-
+  // padding-right: 3.125rem;
+  // padding-left: 3.125rem;
+  
   &__top {
-    display: flex;
     max-width: 1472px;
+    display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: center ;
     align-items: center;
     margin: 0 auto;
+    
     padding: 12px;
     gap: 1rem;
     font-weight: 600;
@@ -24,61 +26,67 @@
       font-size: 13px;
     }
   }
-
-
-  // @media only screen and (min-width: 750px){
-  //   position: sticky;
-  //   top: -40px;
-  //   z-index: 99999;
-  // }
-  // @media only screen and (min-width: 1000px){
-  //   position: sticky;
-  //   top: -10px;
-  //   z-index: 99999;
-  // }
+  
 
   &__main {
     max-width: 1472px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 0 auto;
-
+ 
     @media (max-width: 750px) {
       display: flex;
       flex-direction: column;
-      justify-content: left;
-      padding: 10px;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding-top: 10px;
+      margin-right: 10px;
+      margin-left: 10px;
+      &__logo {
+        object-fit: scale-down;
+        position: relative;
+        top: -28px;
+        margin-right: 10px !important;
+      }
 
+    }
+
+    @media(max-width:280px) {
+      &__logo {
+        object-fit: scale-down;
+        width: 110px;
+      //  height: 80px;
+      }
     }
 
     &__logo {
-      margin-left: 3rem;
-      position: relative;
-      @media(max-width:1000px){
-        left: 50px;
+      // object-fit: scale-down;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin-right: 10px;
+      @media(max-width:1000px) {
+        position: relative;
+        left: 40px !important;
+        margin-right: 0;
       }
-      
-      // Bug with image responsive - fix it later
-      @media (max-width: 750px) {
-        top: -20px;
-        left: -200px;
-        // margin-left: 200px;
 
-      }
-     
     }
 
     .rigth {
+
       position: relative;
       display: flex;
       flex-direction: row;
       justify-content: center;
       cursor: pointer;
       padding-right: 2rem;
-      @media(max-width:1009px ){
+
+      @media(max-width:1009px) {
         display: none;
       }
+
       &__container {
         h3 {
           color: $color-white;
@@ -139,7 +147,8 @@
       border: none;
       margin: 0;
       left: -8px;
-      margin-right: 10px;;
+      margin-right: 10px;
+      ;
       // top: 35px;
     }
 
@@ -165,9 +174,11 @@
     align-items: center;
     justify-content: center;
     margin-left: 10px;
+
     .userIcon {
       cursor: pointer;
     }
+
     // gap: 1rem;
 
     &__icons {

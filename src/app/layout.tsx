@@ -1,11 +1,11 @@
 import "../styles/globals.scss";
 import "react-toastify/dist/ReactToastify.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import { Providers } from "@/redux/provider";
 
-import Top from "@/components/Top";
 import { Source_Sans_Pro } from "next/font/google";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 import SessionProviderCustom from "./NextAuthProviders/SessionProviders";
@@ -34,7 +34,7 @@ export default async function RootLayout({
             {/* <Top /> */}
             {/* <Header /> */}
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </Providers>
         </SessionProviderCustom>
       </body>

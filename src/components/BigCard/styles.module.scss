@@ -1,0 +1,62 @@
+@import url(https://db.onlinewebfonts.com/c/4313d7354c9b8afe25e1a98773ade48d?family=MM+Headline+Pro+WebTT+Regular+Regular);
+
+.bigCard {
+  max-width: 1500px;
+  margin: 0 auto;
+  &__container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding: 1rem;
+    gap: 1rem !important;
+  }
+
+  &__slider{
+    
+  }
+
+  &__content {
+    border: 1px solid $border-color-gray;
+    border-radius: 10px;
+    // flex-grow: 1 !important;
+    width: 100%;
+
+    .image {
+      object-fit: fill;
+      width: 800px !important;
+      height: 400px !important;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .text {
+      margin-top: 1rem;
+      margin-left: 1.2rem;
+      margin-bottom: 1rem;
+      padding: 16px;
+      &__title {
+        font-size: 1.2rem;
+        font-weight: 800;
+        letter-spacing: normal;
+      }
+
+      &__subtitle {
+        font-family: "MM Headline Pro WebTT Regular Regular";
+        color: $color-red;
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      &__pragraph {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      span {
+        border: 1px solid $border-color-gray;
+        border-radius: 1rem;
+        padding: 4px 8px;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

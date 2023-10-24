@@ -1,174 +1,266 @@
 @import url(https://db.onlinewebfonts.com/c/4313d7354c9b8afe25e1a98773ade48d?family=MM+Headline+Pro+WebTT+Regular+Regular);
 
 .title {
-  max-width: 1110px;
+  max-width: 93.75rem !important;
   margin: 0 auto;
 
   h2 {
+    margin-top: 3rem;
+    margin-left: 10px;
+    margin-bottom: 3rem;
     font-size: 24px;
+    text-align: left;
   }
 }
 
 .container {
+  position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column !important;
   justify-content: center;
-  max-width: 1120px;
+  max-width: 93.75rem;
   margin: 0 auto;
   margin-top: 20px;
   
-  // width: 100%;
-
-  &__btn {
+  .card {
+    // width: 100%;
     display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 10px;
-    // border:1px solid red;
-    button {
-      text-align: center;
-      background-color: $btn-primary;
-      color: #000000;
-      font-weight: 600;
-      width: 100%;
-      margin-left: 10px;
-      margin-right: 10px;
-
-
-      // margin: 10px;
-    }
-  }
-
-  &__cards {
-
-    margin-top: 10px;
-    gap: 10px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    // margin-left: 400px;
-
-  }
-}
-
-.card {
-  width: 210px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: space-between;
-  height: 400px;
-  overflow: visible !important;
-  z-index: 9000;
-
-  &__img {
-    padding: 12px;
-    margin: 10px;
-  }
-
-  &__description {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    width: 100%;
-    padding-right: 20px;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    font-size: 16px;
-
-    p {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      line-clamp: 4;
-      -webkit-box-orient: vertical;
+    // justify-content: space-between;
+    // height: 450px; 
+    overflow: visible !important;
+    z-index: 9000;
+    border: 1px solid $border-color-gray;
+    border-radius: 8px;
+    margin-bottom: 4rem;
+    margin-right: 10px;
+    position: relative;
+  
+    &:first-child {
+      margin-left: 10px;
+    }
+  
+    &__wrapper {
+      width: 100%;
+      display: flex !important;
+      justify-content: flex-start !important;
+      // position: relative;
+      span {
+        border: 1px solid $background-primary-color;
+        border-radius: 12px;
+        padding: 0 4px;
+        font-size: 14px;
+      }
+    }
+  
+    &__ad {
+      margin-left: 6px;
+      margin-top: 10px;
+    }
+  
+    &__img {
+      padding: 12px;
+      margin: 10px;
+      margin-bottom: 20px;
+    }
+  
+    &__ratings {
+      width: 100%;
+      display: flex;
+      padding-left: 20px;
+      align-items: center;
+      gap: 5px;
+      color: $white-gray;
+      margin-bottom: 20px;
+      .active {
+        color: $background-primary-color !important;
+      }
+  
+      span {
+        text-align: center;
+        margin-left: 5px;
+        color: $text-gray;
+      }
+    }
+  
+    &__title {
+      text-align: left;
+      padding-right: 20px;
+      padding-left: 20px;
+      margin-bottom: 20px;
+      font-size: 14px;
+  
+      p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+  
+      span {
+        margin-right: 4px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    }
+    
+    &__prices {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start !important;
+      text-align: left;
+      padding-left: 20px;
+      margin-bottom: 40px;
+      .comparablePrice {
+        font-size: 1.2rem;
+        text-decoration: line-through;
+      }
+      .price {
+        color: $background-primary-color;
+        font-weight: 700;
+        font-size: 1.7rem;
+      }
+      p {
+        text-decoration: underline;
+      }
     }
 
-    span {
-      margin-right: 4px;
-      font-weight: bold;
-      text-transform: uppercase;
+    &__sheets {
+      width: 100%;
+      padding-left: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      .right {
+        background: rgb(255, 255, 255);
+        border-width: 1px 0px 1px 1px;
+        border-style: solid;
+        border-color: rgb(0, 0, 0);
+        border-image: initial;
+        display: flex;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        width: 8px;
+        height: 25px !important;
+        span {
+          font-size: 6px;
+        }
+      }
+      .shape {
+        width: 25px !important;
+        height: 25px !important;
+        background-color: rgb(236, 102, 8);
+        color: rgb(255, 255, 255);
+        display: block;
+        font-weight: 700;
+        width: fit-content;
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
+        font-size: 20px;
+        line-height: 22px;
+        height: 24px;
+        padding-left: 2px;
+        padding-right: 2px;
+        span {
+          background-color: rgb(236, 102, 8);
+          color: rgb(255, 255, 255);
+          display: block;
+          font-family: Calibri, sans-serif;
+          font-weight: 700;
+          width: fit-content;
+          text-align: center;
+          -webkit-text-stroke: 1px rgb(0, 0, 0);
+          font-size: 20px;
+          line-height: 22px;
+          height: 24px;
+          padding-left: 2px;
+          padding-right: 2px;
+        }
+      }
+      
+      .triangle {
+        display: flex;
+        position: relative;
+        width: 0px;
+        height: 0px;
+        border-top: 13.5px solid transparent;
+        border-bottom: 13.5px solid transparent;
+        border-left: 9px solid rgb(236, 102, 8);
+        right: -22px;
+        top: -25px;
+        // transform: rotate(90deg);
+
+        span {
+          transform: rotate(10deg) !important;
+        }
+      }
+      .text {
+        font-size: 1rem;
+        margin-left: 1rem;
+        border-bottom: 1px solid $color-black;
+      }
     }
+  
   }
-
-  &__price {
-    p {
-      color: #494745;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: normal;
-    }
-
-    &__value {
-      color: #da2f0c;
-      font-size: 36px;
-      font-style: italic;
-      font-weight: 600;
-      font-family: "MM Headline Pro WebTT Regular Regular";
-    }
-  }
-
-  &__promotions {
-    color: #000000;
-    font-size: 36px;
-    font-style: italic;
-    font-weight: 600;
-    font-family: "MM Headline Pro WebTT Regular Regular";
-  }
-
 }
+
+
+
 
 .next {
+  z-index: 9000;
   position: absolute;
-  padding: 8px 17px;
-  left: 100;
-  top: 40%;
-  display: block;
+  padding: 2px 14px;
+  background-color: $background-tertiary-color;
+  top: -19%;
+  margin-right: 20px;
   color: #000000;
-  box-shadow: 5px -1px 76px 0px rgba(0, 0, 0, 0.55);
-  -webkit-box-shadow: 5px -1px 76px 0px rgba(0, 0, 0, 0.55);
-  -moz-box-shadow: 5px -1px 76px 0px rgba(0, 0, 0, 0.55);
-  background: #fff !important;
+  right: 0px;
   border-radius: 4px;
   font-weight: bold;
   font-size: 20px;
   transition: 0.3s;
   cursor: pointer;
 
-  &::after {
-    content: ">";
-    width: 200px;
-    font-weight: bold;
-  }
-
   &:hover {
     background: #000000 !important;
     color: #fff !important;
   }
+
+  &::after {
+    content: "›";
+    width: 200px;
+    font-weight: bold;
+  }
+
 
 }
 
 .prevs {
   z-index: 9000;
   position: absolute;
-  padding: 8px 17px;
-  left: 100;
-  top: 40%;
+  padding: 2px 14px;
+  background-color: $background-tertiary-color;
+  top: -19%;
+  right: 50px;
   display: block;
   color: #000000;
-  box-shadow: 5px -1px 76px 0px rgba(0, 0, 0, 0.55);
-  -webkit-box-shadow: 5px -1px 76px 0px rgba(0, 0, 0, 0.55);
-  -moz-box-shadow: 5px -1px 76px 0px rgba(0, 0, 0, 0.55);
-  background: #fff !important;
   border-radius: 4px;
   font-weight: bold;
   font-size: 20px;
   transition: 0.3s;
+  margin-right: 12px;
   cursor: pointer;
 
-  &::after {
-    content: "<";
-    width: 200px;
+  &::before {
+    content: "‹";
     font-weight: bold;
   }
 
@@ -178,4 +270,3 @@
   }
 
 }
-
